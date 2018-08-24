@@ -6,7 +6,7 @@ import istu.edu.irnitu.model.data.TimepadApi
 import istu.edu.irnitu.model.system.SchedulersProvider
 
 
-class TimepadRepository(
+class EventsRepository(
         private val api: TimepadApi,
         private val schedulers: SchedulersProvider
 ) {

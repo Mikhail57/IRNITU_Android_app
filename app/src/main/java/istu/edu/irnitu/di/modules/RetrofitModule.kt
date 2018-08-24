@@ -10,13 +10,20 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module(includes = [ContextModule::class])
 class RetrofitModule {
     @Provides
+    @Named("timepad")
     @Singleton
-    fun provideRetrofit(builder: Retrofit.Builder): Retrofit = builder.baseUrl("http://api.portalgkh.ru/").build()
+    fun provideTimepadRetrofit(builder: Retrofit.Builder): Retrofit = builder.baseUrl("https://api.timepad.ru").build()
+
+    @Provides
+    @Named("istu")
+    @Singleton
+    fun provideIstuRetrofit(builder: Retrofit.Builder): Retrofit = builder.baseUrl("http://irnituapi.ru").build()
 
     @Provides
     @Singleton

@@ -1,9 +1,11 @@
 package istu.edu.irnitu.ui.fragment.events
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.events.EventsView
@@ -11,18 +13,19 @@ import istu.edu.irnitu.presentation.presenter.events.EventsPresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Event
+import kotlinx.android.synthetic.main.fragment_events.*
 
 class EventsFragment : MvpAppCompatFragment(), EventsView {
     override fun showLoading(isLoading: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(activity, "Loading: $isLoading", Toast.LENGTH_SHORT).show()
     }
 
     override fun showLoadingError(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(activity, "Loading error: $msg", Toast.LENGTH_SHORT).show()
     }
 
     override fun showEvents(events: List<Event>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        textView.text = events.toString()
     }
 
     companion object {
@@ -34,6 +37,10 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    init {
+        Log.i(TAG, "INIT")
     }
 
     @InjectPresenter
