@@ -9,10 +9,22 @@ import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.events.EventsView
 import istu.edu.irnitu.presentation.presenter.events.EventsPresenter
 
-import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import istu.edu.irnitu.entity.Event
 
 class EventsFragment : MvpAppCompatFragment(), EventsView {
+    override fun showLoading(isLoading: Boolean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showLoadingError(msg: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showEvents(events: List<Event>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object {
         const val TAG = "EventsFragment"
 
