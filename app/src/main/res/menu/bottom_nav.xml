@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/resourcesTab"
+        android:icon="?android:attr/listChoiceIndicatorMultiple"
+        android:title="@string/resources_tab" />
+    <item
+        android:id="@+id/newsTab"
+        android:icon="@drawable/ic_news"
+        android:title="@string/news_tab" />
+    <item
+        android:id="@+id/eventsTab"
+        android:icon="@drawable/ic_events"
+        android:title="@string/events_tab" />
+    <item
+        android:id="@+id/scheduleTab"
+        android:icon="@drawable/ic_schedule"
+        android:title="@string/schedule_tab" />
+    <item
+        android:id="@+id/settingsTab"
+        android:icon="?android:attr/floatingToolbarOpenDrawable"
+        android:title="@string/settings_tab" />
+</menu>

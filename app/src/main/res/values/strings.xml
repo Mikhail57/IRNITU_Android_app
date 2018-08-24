@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Irnitu</string>
+    <string name="resources_tab">Ресурсы</string>
+    <string name="news_tab">Новости</string>
+    <string name="events_tab">События</string>
+    <string name="schedule_tab">Расписание</string>
+    <string name="settings_tab">Настройки</string>
 </resources>
