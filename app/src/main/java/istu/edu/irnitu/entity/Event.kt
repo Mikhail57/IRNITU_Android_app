@@ -1,10 +1,11 @@
 package istu.edu.irnitu.entity
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class Event(
         @field:SerializedName("starts_at")
-        val startsAt: String,
+        val startsAt: Date,
 
         @field:SerializedName("description_short")
         val descriptionShort: String,

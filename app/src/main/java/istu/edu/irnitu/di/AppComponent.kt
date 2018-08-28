@@ -7,6 +7,7 @@ import istu.edu.irnitu.di.modules.ContextModule
 import istu.edu.irnitu.di.modules.NavigationModule
 import istu.edu.irnitu.di.modules.TimepadModule
 import istu.edu.irnitu.presentation.presenter.events.EventsPresenter
+import istu.edu.irnitu.ui.adapters.EventsAdapter
 import javax.inject.Singleton
 
 @Singleton
@@ -16,4 +17,5 @@ interface AppComponent {
 
     fun inject(mainActivity: MainActivity)
     fun inject(eventsPresenter: EventsPresenter)
+    fun inject(eventsAdapter: EventsAdapter)
 }

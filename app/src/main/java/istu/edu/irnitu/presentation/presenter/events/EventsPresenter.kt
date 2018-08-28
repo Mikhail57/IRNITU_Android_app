@@ -16,7 +16,7 @@ class EventsPresenter : MvpPresenter<EventsView>() {
 
     init {
         Application.appComponent.inject(this)
-        Log.i("EventsPresenter", "INIT")
+        Log.d("EventsPresenter", "INIT")
     }
 
     @SuppressLint("CheckResult")
@@ -24,7 +24,7 @@ class EventsPresenter : MvpPresenter<EventsView>() {
         super.onFirstViewAttach()
 
         eventsRepository
-                .getEvents(10)
+                .getEvents(20)
                 .doOnSubscribe { viewState.showLoading(true) }
                 .doAfterTerminate { viewState.showLoading(false) }
                 .subscribe({

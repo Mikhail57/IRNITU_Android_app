@@ -1,7 +1,8 @@
 package istu.edu.irnitu.ui.fragment.events
 
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +14,46 @@ import istu.edu.irnitu.presentation.presenter.events.EventsPresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Event
+import istu.edu.irnitu.ui.adapters.EventsAdapter
 import kotlinx.android.synthetic.main.fragment_events.*
 
 class EventsFragment : MvpAppCompatFragment(), EventsView {
+
+    @InjectPresenter
+    lateinit var mEventsPresenter: EventsPresenter
+
+    private lateinit var viewAdapter: EventsAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
+
+    private var events: List<Event> = ArrayList()
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_events, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewAdapter = EventsAdapter(events)
+        viewManager = LinearLayoutManager(context)
+
+        eventsRecyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+    }
+
+
     override fun showLoading(isLoading: Boolean) {
-        Toast.makeText(activity, "Loading: $isLoading", Toast.LENGTH_SHORT).show()
+        if (isLoading) {
+            loadingEventsScreen.visibility = View.VISIBLE
+            eventsConstentScreen.visibility = View.GONE
+        } else {
+            loadingEventsScreen.visibility = View.GONE
+            eventsConstentScreen.visibility = View.VISIBLE
+        }
     }
 
     override fun showLoadingError(msg: String) {
@@ -25,7 +61,9 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
     }
 
     override fun showEvents(events: List<Event>) {
-        textView.text = events.toString()
+        this.events = events
+        viewAdapter.events = events
+        viewAdapter.notifyDataSetChanged()
     }
 
     companion object {
@@ -37,22 +75,5 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
             fragment.arguments = args
             return fragment
         }
-    }
-
-    init {
-        Log.i(TAG, "INIT")
-    }
-
-    @InjectPresenter
-    lateinit var mEventsPresenter: EventsPresenter
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_events, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 }
