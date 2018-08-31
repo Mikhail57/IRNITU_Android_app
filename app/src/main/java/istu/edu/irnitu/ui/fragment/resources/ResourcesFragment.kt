@@ -1,6 +1,8 @@
 package istu.edu.irnitu.ui.fragment.resources
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,23 +11,20 @@ import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.resources.ResourcesView
 import istu.edu.irnitu.presentation.presenter.resources.ResourcesPresenter
 
-import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import istu.edu.irnitu.entity.Resource
+import istu.edu.irnitu.ui.adapters.ResourcesAdapter
+import kotlinx.android.synthetic.main.fragment_resources.*
 
 class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
-    companion object {
-        const val TAG = "ResourcesFragment"
-
-        fun newInstance(): ResourcesFragment {
-            val fragment: ResourcesFragment = ResourcesFragment()
-            val args: Bundle = Bundle()
-            fragment.arguments = args
-            return fragment
-        }
-    }
 
     @InjectPresenter
     lateinit var mResourcesPresenter: ResourcesPresenter
+
+    private lateinit var viewAdapter: ResourcesAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
+
+    private var resources: List<Resource> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,5 +34,36 @@ class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewAdapter = ResourcesAdapter(resources)
+        viewManager = LinearLayoutManager(view.context)
+
+        resourcesRecyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+    }
+
+    override fun showLoading(isLoading: Boolean) {
+    }
+
+    override fun showLoadingError(msg: String) {
+    }
+
+    override fun showResources(resource: List<Resource>) {
+        this.resources = resources
+        viewAdapter.resources = resources
+        viewAdapter.notifyDataSetChanged()
+    }
+
+    companion object {
+        const val TAG = "ResourcesFragment"
+
+        fun newInstance(): ResourcesFragment {
+            val fragment: ResourcesFragment = ResourcesFragment()
+            val args: Bundle = Bundle()
+            fragment.arguments = args
+            return fragment
+        }
     }
 }
