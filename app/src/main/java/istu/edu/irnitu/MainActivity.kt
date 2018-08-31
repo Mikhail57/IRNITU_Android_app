@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
-    private var eventsFragment: EventsFragment? = null
-    private var newsFragment: NewsFragment? = null
-    private var resourcesFragment: ResourcesFragment? = null
-    private var scheduleFragment: ScheduleFragment? = null
-    private var settingsFragment: SettingsFragment? = null
+//    private var eventsFragment: EventsFragment? = null
+//    private var newsFragment: NewsFragment? = null
+//    private var resourcesFragment: ResourcesFragment? = null
+//    private var scheduleFragment: ScheduleFragment? = null
+//    private var settingsFragment: SettingsFragment? = null
 
     private lateinit var navigator: SupportFragmentNavigator
 
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnNavigationItemSelectedListener true
         }
-
+        bottomNavigation.selectedItemId = R.id.resourcesFragment
     }
 
     private fun initContainers() {

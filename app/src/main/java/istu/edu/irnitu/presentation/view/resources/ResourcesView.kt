@@ -7,5 +7,4 @@ interface ResourcesView : MvpView {
     fun showLoading(isLoading: Boolean)
     fun showLoadingError(msg: String)
     fun showResources(resource: List<Resource>)
-
 }

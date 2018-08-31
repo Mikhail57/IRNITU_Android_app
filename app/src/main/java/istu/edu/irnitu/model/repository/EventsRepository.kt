@@ -11,7 +11,7 @@ class EventsRepository(
         private val schedulers: SchedulersProvider
 ) {
     fun getEvents(limit: Int): Single<List<Event>> {
-        return api.getEvents(limit, "starts_at", "description_short", 112730)
+        return api.getEvents(limit, "starts_at", "description_short,location", 112730)
                 .map { it.values }
                 .subscribeOn(schedulers.io())
                 .observeOn(schedulers.ui())

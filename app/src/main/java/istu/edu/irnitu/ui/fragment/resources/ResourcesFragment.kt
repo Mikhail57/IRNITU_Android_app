@@ -3,6 +3,7 @@ package istu.edu.irnitu.ui.fragment.resources
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,7 +51,7 @@ class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
     override fun showLoadingError(msg: String) {
     }
 
-    override fun showResources(resource: List<Resource>) {
+    override fun showResources(resources: List<Resource>) {
         this.resources = resources
         viewAdapter.resources = resources
         viewAdapter.notifyDataSetChanged()
