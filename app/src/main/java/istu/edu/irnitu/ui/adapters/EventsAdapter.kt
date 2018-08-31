@@ -35,7 +35,7 @@ class EventsAdapter(var events: List<Event>) : RecyclerView.Adapter<EventsAdapte
         holder.apply {
             title.text = event.name
             date.text = DateUtils.formatDateTime(context, event.startsAt.time, DateUtils.FORMAT_ABBREV_RELATIVE)
-            place.text = "LOL"
+            place.text = event.location.address
             image.setImageURI(event.image.defaultUrl)
         }
     }

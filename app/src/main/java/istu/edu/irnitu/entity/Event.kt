@@ -26,5 +26,8 @@ data class Event(
         val url: String,
 
         @field:SerializedName("poster_image")
-        val image: EventImage
+        val image: EventImage,
+
+        @field:SerializedName("location")
+        val location: EventLocation
 )
