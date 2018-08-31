@@ -20,7 +20,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:actualImageScaleType="centerCrop"
-            app:actualImageUri="http://www.westcogroupinc.com/wp-content/uploads/2016/06/placeholder720.gif"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

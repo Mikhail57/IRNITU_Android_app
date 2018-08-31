@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="128dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/newsImage"
+        android:layout_width="128dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:actualImageScaleType="centerCrop"
+        app:actualImageUri="http://www.westcogroupinc.com/wp-content/uploads/2016/06/placeholder720.gif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderImage="@drawable/placeholder"
+        app:roundedCornerRadius="8dp" />
+
+    <TextView
+        android:id="@+id/newsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="@color/colorEventTitle"
+        android:textSize="18sp"
+        android:typeface="normal"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newsImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Очень бошой заголовок новости, который не помещается в 2 строчки" />
+
+    <TextView
+        android:id="@+id/newsShortText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:maxLines="3"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newsImage"
+        app:layout_constraintTop_toBottomOf="@+id/newsTitle"
+        tools:text="Lorem ipsum dole vich. Вы что, реально подумали, что здесь будет эта стандартная рыба? Не тут-то было! Это самописная рыба, которая отличается особой интересностью и непредсказуемостью. Ну и еще немного текста, чтобы уж точно не влезло в 4 строчки (или сколдько вы там сейчас показываете?)." />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/newsShortText"
+        app:layout_constraintEnd_toEndOf="@+id/newsShortText"
+        app:layout_constraintStart_toStartOf="@+id/newsShortText"
+        app:layout_constraintTop_toTopOf="@+id/newsShortText" />
+
+    <TextView
+        android:id="@+id/newsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="22 августа 2077" />
+
+    <android.support.design.chip.ChipGroup
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/newsDate"
+        app:layout_constraintStart_toEndOf="@+id/newsImage"
+        app:singleLine="true">
+
+        <android.support.design.chip.Chip
+            android:id="@+id/newsChip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Образование" />
+
+        <android.support.design.chip.Chip
+            android:id="@+id/newsChip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Студентам" />
+    </android.support.design.chip.ChipGroup>
+
+</android.support.constraint.ConstraintLayout>

@@ -29,6 +29,7 @@ def rxandroidVersion = '2.0.2'
 def daggerVersion = '2.16'
 def ciceroneVersion = '3.0.0'
 def frescoVersion = '1.10.0'
+def pagingVersion = "1.0.1"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -65,6 +66,10 @@ dependencies {
 
     // Navigation
     implementation "ru.terrakok.cicerone:cicerone:$ciceroneVersion"
+
+    // Paging
+    implementation "android.arch.paging:runtime:$pagingVersion"
+    implementation "android.arch.paging:rxjava2:$pagingVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
