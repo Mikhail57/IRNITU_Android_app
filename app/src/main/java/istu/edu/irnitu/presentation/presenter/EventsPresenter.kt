@@ -1,13 +1,12 @@
-package istu.edu.irnitu.presentation.presenter.events
+package istu.edu.irnitu.presentation.presenter
 
-import android.annotation.SuppressLint
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.disposables.CompositeDisposable
 import istu.edu.irnitu.Application
 import istu.edu.irnitu.model.repository.EventsRepository
-import istu.edu.irnitu.presentation.view.events.EventsView
+import istu.edu.irnitu.presentation.view.EventsView
 import javax.inject.Inject
 
 @InjectViewState

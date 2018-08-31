@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.widget.Toast
-import istu.edu.irnitu.ui.fragment.events.EventsFragment
-import istu.edu.irnitu.ui.fragment.news.NewsFragment
-import istu.edu.irnitu.ui.fragment.resources.ResourcesFragment
-import istu.edu.irnitu.ui.fragment.schedule.ScheduleFragment
-import istu.edu.irnitu.ui.fragment.settings.SettingsFragment
+import istu.edu.irnitu.ui.fragment.EventsFragment
+import istu.edu.irnitu.ui.fragment.NewsFragment
+import istu.edu.irnitu.ui.fragment.ResourcesFragment
+import istu.edu.irnitu.ui.fragment.ScheduleFragment
+import istu.edu.irnitu.ui.fragment.SettingsFragment
 import istu.edu.irnitu.utils.RestoringStateSupportFragmentNavigator
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.NavigatorHolder

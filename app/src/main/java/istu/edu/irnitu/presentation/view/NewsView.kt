@@ -1,4 +1,4 @@
-package istu.edu.irnitu.presentation.view.news
+package istu.edu.irnitu.presentation.view
 
 import com.arellomobile.mvp.MvpView
 

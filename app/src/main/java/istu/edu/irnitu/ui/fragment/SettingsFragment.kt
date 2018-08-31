@@ -1,4 +1,4 @@
-package istu.edu.irnitu.ui.fragment.settings
+package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
-import istu.edu.irnitu.presentation.view.settings.SettingsView
-import istu.edu.irnitu.presentation.presenter.settings.SettingsPresenter
+import istu.edu.irnitu.presentation.view.SettingsView
+import istu.edu.irnitu.presentation.presenter.SettingsPresenter
 
-import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 
 class SettingsFragment : MvpAppCompatFragment(), SettingsView {

@@ -1,11 +1,11 @@
-package istu.edu.irnitu.presentation.presenter.resources
+package istu.edu.irnitu.presentation.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.disposables.CompositeDisposable
 import istu.edu.irnitu.Application
 import istu.edu.irnitu.model.repository.ResourcesRepository
-import istu.edu.irnitu.presentation.view.resources.ResourcesView
+import istu.edu.irnitu.presentation.view.ResourcesView
 import javax.inject.Inject
 
 @InjectViewState

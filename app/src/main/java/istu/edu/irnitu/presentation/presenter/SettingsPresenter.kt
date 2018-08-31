@@ -1,8 +1,8 @@
-package istu.edu.irnitu.presentation.presenter.settings
+package istu.edu.irnitu.presentation.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import istu.edu.irnitu.presentation.view.settings.SettingsView
+import istu.edu.irnitu.presentation.view.SettingsView
 
 @InjectViewState
 class SettingsPresenter : MvpPresenter<SettingsView>() {

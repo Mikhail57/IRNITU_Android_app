@@ -1,16 +1,15 @@
-package istu.edu.irnitu.ui.fragment.resources
+package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
-import istu.edu.irnitu.presentation.view.resources.ResourcesView
-import istu.edu.irnitu.presentation.presenter.resources.ResourcesPresenter
+import istu.edu.irnitu.presentation.view.ResourcesView
+import istu.edu.irnitu.presentation.presenter.ResourcesPresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Resource

@@ -7,8 +7,8 @@ import istu.edu.irnitu.di.modules.ContextModule
 import istu.edu.irnitu.di.modules.NavigationModule
 import istu.edu.irnitu.di.modules.ResourcesModule
 import istu.edu.irnitu.di.modules.TimepadModule
-import istu.edu.irnitu.presentation.presenter.events.EventsPresenter
-import istu.edu.irnitu.presentation.presenter.resources.ResourcesPresenter
+import istu.edu.irnitu.presentation.presenter.EventsPresenter
+import istu.edu.irnitu.presentation.presenter.ResourcesPresenter
 import istu.edu.irnitu.ui.adapters.EventsAdapter
 import javax.inject.Singleton
 

@@ -1,4 +1,4 @@
-package istu.edu.irnitu.ui.fragment.events
+package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
-import istu.edu.irnitu.presentation.view.events.EventsView
-import istu.edu.irnitu.presentation.presenter.events.EventsPresenter
+import istu.edu.irnitu.presentation.view.EventsView
+import istu.edu.irnitu.presentation.presenter.EventsPresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Event

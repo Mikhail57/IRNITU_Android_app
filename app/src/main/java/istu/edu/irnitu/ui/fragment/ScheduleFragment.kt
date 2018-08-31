@@ -1,4 +1,4 @@
-package istu.edu.irnitu.ui.fragment.news
+package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,18 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
-import istu.edu.irnitu.presentation.view.news.NewsView
-import istu.edu.irnitu.presentation.presenter.news.NewsPresenter
+import istu.edu.irnitu.presentation.view.ScheduleView
+import istu.edu.irnitu.presentation.presenter.SchedulePresenter
 
-import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 
-class NewsFragment : MvpAppCompatFragment(), NewsView {
+class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     companion object {
-        const val TAG = "NewsFragment"
+        const val TAG = "ScheduleFragment"
 
-        fun newInstance(): NewsFragment {
-            val fragment: NewsFragment = NewsFragment()
+        fun newInstance(): ScheduleFragment {
+            val fragment: ScheduleFragment = ScheduleFragment()
             val args: Bundle = Bundle()
             fragment.arguments = args
             return fragment
@@ -25,14 +24,15 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
     }
 
     @InjectPresenter
-    lateinit var mNewsPresenter: NewsPresenter
+    lateinit var mSchedulePresenter: SchedulePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_news, container, false)
+        return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }
