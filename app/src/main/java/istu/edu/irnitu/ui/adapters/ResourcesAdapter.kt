@@ -1,17 +1,13 @@
 package istu.edu.irnitu.ui.adapters
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
-import istu.edu.irnitu.Application
 import istu.edu.irnitu.R
 import istu.edu.irnitu.entity.Resource
-import javax.inject.Inject
 
 class ResourcesAdapter(var resources: List<Resource>) : RecyclerView.Adapter<ResourcesAdapter.ResourcesViewHolder>() {
 
