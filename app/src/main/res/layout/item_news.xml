@@ -41,8 +41,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Очень бошой заголовок новости, который не помещается в 2 строчки" />
 
-    <TextView
-        android:id="@+id/newsShortText"
+    <com.bosphere.fadingedgelayout.FadingEdgeLayout
+        android:id="@+id/newsFadingTextContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -50,22 +50,21 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:maxLines="3"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:textSize="12sp"
+        app:fel_edge="bottom"
+        app:fel_size_bottom="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/newsImage"
-        app:layout_constraintTop_toBottomOf="@+id/newsTitle"
-        tools:text="Lorem ipsum dole vich. Вы что, реально подумали, что здесь будет эта стандартная рыба? Не тут-то было! Это самописная рыба, которая отличается особой интересностью и непредсказуемостью. Ну и еще немного текста, чтобы уж точно не влезло в 4 строчки (или сколдько вы там сейчас показываете?)." />
+        app:layout_constraintTop_toBottomOf="@+id/newsTitle">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/newsShortText"
-        app:layout_constraintEnd_toEndOf="@+id/newsShortText"
-        app:layout_constraintStart_toStartOf="@+id/newsShortText"
-        app:layout_constraintTop_toTopOf="@+id/newsShortText" />
+        <TextView
+            android:id="@+id/newsShortText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            android:textSize="12sp"
+            tools:text="Lorem ipsum dole vich. Вы что, реально подумали, что здесь будет эта стандартная рыба? Не тут-то было! Это самописная рыба, которая отличается особой интересностью и непредсказуемостью. Ну и еще немного текста, чтобы уж точно не влезло в 4 строчки (или сколдько вы там сейчас показываете?)." />
+    </com.bosphere.fadingedgelayout.FadingEdgeLayout>
 
     <TextView
         android:id="@+id/newsDate"
@@ -79,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="22 августа 2077" />
 
-    <android.support.design.chip.ChipGroup
+    <com.bosphere.fadingedgelayout.FadingEdgeLayout
         android:layout_width="0dp"
         android:layout_height="16dp"
         android:layout_marginStart="8dp"
@@ -87,22 +86,29 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="8dp"
+        app:fel_edge="right"
+        app:fel_size_right="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/newsDate"
-        app:layout_constraintStart_toEndOf="@+id/newsImage"
-        app:singleLine="true">
+        app:layout_constraintStart_toEndOf="@+id/newsImage">
 
-        <android.support.design.chip.Chip
-            android:id="@+id/newsChip1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Образование" />
+        <android.support.design.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:singleLine="true">
 
-        <android.support.design.chip.Chip
-            android:id="@+id/newsChip2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Студентам" />
-    </android.support.design.chip.ChipGroup>
+            <android.support.design.chip.Chip
+                android:id="@+id/newsChip1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Образование" />
+
+            <android.support.design.chip.Chip
+                android:id="@+id/newsChip2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Студентам" />
+        </android.support.design.chip.ChipGroup>
+    </com.bosphere.fadingedgelayout.FadingEdgeLayout>
 
 </android.support.constraint.ConstraintLayout>
