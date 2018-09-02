@@ -30,6 +30,7 @@ def daggerVersion = '2.16'
 def ciceroneVersion = '3.0.0'
 def frescoVersion = '1.10.0'
 def pagingVersion = "1.0.1"
+def roomVersion = "1.1.1"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -73,6 +74,11 @@ dependencies {
 
     // Fading edges
     implementation 'com.github.bosphere.android-fadingedgelayout:fadingedgelayout:1.0.0'
+
+    // Room (ORM)
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$roomVersion"
+    implementation "android.arch.persistence.room:rxjava2:$roomVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
