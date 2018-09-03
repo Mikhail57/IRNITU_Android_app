@@ -1,4 +1,4 @@
-package istu.edu.irnitu.di.modules
+package istu.edu.irnitu.di.modules.common
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

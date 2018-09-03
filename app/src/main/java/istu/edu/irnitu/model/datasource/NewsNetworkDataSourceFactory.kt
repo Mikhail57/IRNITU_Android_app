@@ -7,7 +7,7 @@ import istu.edu.irnitu.entity.News
 import istu.edu.irnitu.model.repository.NewsPagedRepository
 
 class NewsNetworkDataSourceFactory(private val newsPagedRepository: NewsPagedRepository) : DataSource.Factory<Int, News>() {
-    val newsLiveDataSource: MutableLiveData<PageKeyedDataSource<Int, News>> = MutableLiveData()
+    private val newsLiveDataSource: MutableLiveData<PageKeyedDataSource<Int, News>> = MutableLiveData()
 
     override fun create(): DataSource<Int, News> {
         val newsDataSource = NewsDataSource(newsPagedRepository)

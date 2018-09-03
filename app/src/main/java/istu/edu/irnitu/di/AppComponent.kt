@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.Component
 import istu.edu.irnitu.MainActivity
 import istu.edu.irnitu.di.modules.*
+import istu.edu.irnitu.di.modules.common.ContextModule
 import istu.edu.irnitu.presentation.presenter.EventsPresenter
 import istu.edu.irnitu.presentation.presenter.NewsPresenter
 import istu.edu.irnitu.presentation.presenter.ResourcesPresenter
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
-    ContextModule::class, NavigationModule::class,
+    ContextModule::class, NavigationModule::class, RoomModule::class,
     TimepadModule::class, ResourcesModule::class, NewsModule::class
 ])
 interface AppComponent {

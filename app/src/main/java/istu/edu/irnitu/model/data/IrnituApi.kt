@@ -13,8 +13,8 @@ interface IrnituApi {
     fun getNews(@Query("page") page: Int): Single<List<News>>
 
     @GET("/schedule/groups")
-    fun getGroups(): List<Faculty>
+    fun getGroups(): Single<List<Faculty>>
 
     @GET("/schedule/group/{group}")
-    fun getGroup(@Path("group") group: String): Single<List<Class>>
+    fun getGroupSchedule(@Path("group") group: String): Single<List<Class>>
 }

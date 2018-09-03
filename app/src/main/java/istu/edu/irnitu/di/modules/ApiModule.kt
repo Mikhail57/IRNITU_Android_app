@@ -2,6 +2,7 @@ package istu.edu.irnitu.di.modules
 
 import dagger.Module
 import dagger.Provides
+import istu.edu.irnitu.di.modules.common.RetrofitModule
 import istu.edu.irnitu.model.data.IrnituApi
 import istu.edu.irnitu.model.data.TimepadApi
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package istu.edu.irnitu.di.modules
+package istu.edu.irnitu.di.modules.common
 
 import dagger.Module
 import dagger.Provides

@@ -1,8 +1,13 @@
 package istu.edu.irnitu.entity
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
+
+@Entity(tableName = "schedule", primaryKeys = ["group_title", "day", "everyWeek"])
 data class Class(
         val title: String,
         val room: String,
+        @ColumnInfo(name = "group_title")
         val group: String,
         val teacher: String,
         val teacherId: String,

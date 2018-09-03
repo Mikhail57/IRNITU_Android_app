@@ -4,7 +4,7 @@ import android.app.Application
 import com.facebook.drawee.backends.pipeline.Fresco
 import istu.edu.irnitu.di.AppComponent
 import istu.edu.irnitu.di.DaggerAppComponent
-import istu.edu.irnitu.di.modules.ContextModule
+import istu.edu.irnitu.di.modules.common.ContextModule
 
 class Application : Application() {
 
