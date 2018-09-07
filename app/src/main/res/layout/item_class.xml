@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/classStartHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textColor="@android:color/black"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="11" />
+
+    <TextView
+        android:id="@+id/classStartMinute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@android:color/black"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintStart_toEndOf="@+id/classStartHour"
+        app:layout_constraintTop_toTopOf="@+id/classStartHour"
+        tools:text="35" />
+
+    <TextView
+        android:id="@+id/classEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintStart_toStartOf="@+id/classStartHour"
+        app:layout_constraintTop_toBottomOf="@+id/classStartHour"
+        tools:text="13:05" />
+
+    <TextView
+        android:id="@+id/classType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorLectureBackground"
+        android:padding="2dp"
+        android:paddingLeft="8sp"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Лекция" />
+
+    <TextView
+        android:id="@+id/classTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toStartOf="@+id/classRoom"
+        app:layout_constraintStart_toStartOf="@+id/classType"
+        app:layout_constraintTop_toBottomOf="@+id/classType"
+        tools:text="Современные системы автоматизированного проектирования (САПР)" />
+
+    <TextView
+        android:id="@+id/classRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/classTitle"
+        tools:text="ауд. Б115" />
+
+    <TextView
+        android:id="@+id/classTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/classTitle"
+        app:layout_constraintTop_toBottomOf="@+id/classTitle"
+        tools:text="Бурмакин А.С." />
+</android.support.constraint.ConstraintLayout>
