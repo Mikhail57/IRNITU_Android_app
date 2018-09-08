@@ -93,4 +93,60 @@
         app:layout_constraintStart_toStartOf="@+id/classTitle"
         app:layout_constraintTop_toBottomOf="@+id/classTitle"
         tools:text="Бурмакин А.С." />
+
+    <TextView
+        android:id="@+id/classType2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorLectureBackground"
+        android:padding="2dp"
+        android:paddingLeft="8sp"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/classTeacher"
+        tools:text="Лекция" />
+
+    <TextView
+        android:id="@+id/classTitle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:maxLines="3"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toStartOf="@+id/classRoom"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/classType"
+        app:layout_constraintTop_toBottomOf="@+id/classType2"
+        tools:text="Современные системы автоматизированного проектирования (САПР)" />
+
+    <TextView
+        android:id="@+id/classRoom2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:fontFamily="@font/roboto_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/classTitle2"
+        tools:text="ауд. Б115" />
+
+    <TextView
+        android:id="@+id/classTeacher2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintStart_toStartOf="@+id/classTitle2"
+        app:layout_constraintTop_toBottomOf="@+id/classTitle2"
+        tools:text="Бурмакин А.С." />
+
 </android.support.constraint.ConstraintLayout>
