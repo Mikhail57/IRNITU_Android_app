@@ -7,3 +7,11 @@ object TabScreens {
     const val SCHEDULE = "schedule"
     const val SETTINGS = "settings"
 }
+
+enum class Tabs {
+    EVENTS,
+    NEWS,
+    RESOURCES,
+    SCHEDULE,
+    SETTINGS
+}

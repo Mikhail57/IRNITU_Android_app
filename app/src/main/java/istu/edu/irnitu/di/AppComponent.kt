@@ -6,6 +6,7 @@ import istu.edu.irnitu.MainActivity
 import istu.edu.irnitu.di.modules.*
 import istu.edu.irnitu.di.modules.common.ContextModule
 import istu.edu.irnitu.presentation.presenter.EventsPresenter
+import istu.edu.irnitu.presentation.presenter.MainScreenPresenter
 import istu.edu.irnitu.presentation.presenter.NewsPresenter
 import istu.edu.irnitu.presentation.presenter.ResourcesPresenter
 import istu.edu.irnitu.ui.adapters.EventsAdapter
@@ -26,4 +27,5 @@ interface AppComponent {
     fun inject(resourcesPresenter: ResourcesPresenter)
     fun inject(newsPresenter: NewsPresenter)
     fun inject(eventsAdapter: EventsAdapter)
+    fun inject(mainScreenPresenter: MainScreenPresenter)
 }

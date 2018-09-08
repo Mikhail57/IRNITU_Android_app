@@ -1,10 +1,13 @@
 package istu.edu.irnitu
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.widget.Toast
+import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
+import istu.edu.irnitu.presentation.presenter.MainScreenPresenter
+import istu.edu.irnitu.presentation.view.MainScreenView
 import istu.edu.irnitu.ui.fragment.EventsFragment
 import istu.edu.irnitu.ui.fragment.NewsFragment
 import istu.edu.irnitu.ui.fragment.ResourcesFragment
@@ -18,19 +21,16 @@ import ru.terrakok.cicerone.android.SupportFragmentNavigator
 import ru.terrakok.cicerone.commands.BackTo
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : MvpAppCompatActivity(), MainScreenView {
+
+    @InjectPresenter
+    lateinit var presenter: MainScreenPresenter
 
     @Inject
     lateinit var router: Router
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
-
-//    private var eventsFragment: EventsFragment? = null
-//    private var newsFragment: NewsFragment? = null
-//    private var resourcesFragment: ResourcesFragment? = null
-//    private var scheduleFragment: ScheduleFragment? = null
-//    private var settingsFragment: SettingsFragment? = null
 
     private lateinit var navigator: SupportFragmentNavigator
 
@@ -44,11 +44,11 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.eventsFragment -> router.navigateTo(TabScreens.EVENTS)
-                R.id.newsFragment -> router.navigateTo(TabScreens.NEWS)
-                R.id.resourcesFragment -> router.navigateTo(TabScreens.RESOURCES)
-                R.id.scheduleFragment -> router.navigateTo(TabScreens.SCHEDULE)
-                R.id.settingsFragment -> router.navigateTo(TabScreens.SETTINGS)
+                R.id.eventsFragment -> presenter.onTabClick(Tabs.EVENTS)
+                R.id.newsFragment -> presenter.onTabClick(Tabs.NEWS)
+                R.id.resourcesFragment -> presenter.onTabClick(Tabs.RESOURCES)
+                R.id.scheduleFragment -> presenter.onTabClick(Tabs.SCHEDULE)
+                R.id.settingsFragment -> presenter.onTabClick(Tabs.SETTINGS)
                 else -> return@setOnNavigationItemSelectedListener false
             }
             return@setOnNavigationItemSelectedListener true
@@ -56,15 +56,29 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation.selectedItemId = R.id.resourcesFragment
     }
 
+    override fun goToTab(tab: Tabs) {
+//        val id = when (tab) {
+//            Tabs.EVENTS -> R.id.eventsFragment
+//            Tabs.NEWS -> R.id.newsFragment
+//            Tabs.RESOURCES -> R.id.resourcesFragment
+//            Tabs.SCHEDULE -> R.id.scheduleFragment
+//            Tabs.SETTINGS -> R.id.settingsFragment
+//        }
+//        if (id != bottomNavigation.selectedItemId)
+//            bottomNavigation.selectedItemId = id
+    }
+
+    override fun onBackPressed() = presenter.onBackPressed()
+
     private fun initContainers() {
         navigator = object : RestoringStateSupportFragmentNavigator(supportFragmentManager, R.id.container) {
             override fun createFragment(screenKey: String, data: Any?): Fragment =
                     when (screenKey) {
-                        TabScreens.EVENTS -> EventsFragment.newInstance()
-                        TabScreens.NEWS -> NewsFragment.newInstance()
-                        TabScreens.RESOURCES -> ResourcesFragment.newInstance()
-                        TabScreens.SCHEDULE -> ScheduleFragment.newInstance()
-                        TabScreens.SETTINGS -> SettingsFragment.newInstance()
+                        Tabs.EVENTS.name -> EventsFragment.newInstance()
+                        Tabs.NEWS.name -> NewsFragment.newInstance()
+                        Tabs.RESOURCES.name -> ResourcesFragment.newInstance()
+                        Tabs.SCHEDULE.name -> ScheduleFragment.newInstance()
+                        Tabs.SETTINGS.name -> SettingsFragment.newInstance()
                         else -> TODO("LOL")
                     }
 
@@ -78,12 +92,12 @@ class MainActivity : AppCompatActivity() {
 
             override fun back() {
                 Log.e("Navigator", "BACK CALLED")
-                if (localStackCopy.size > 0) {
+                if (localStackCopy.size > 1) {
                     val id = getIdFromTabName(localStackCopy.peek())
                     if (id != 0) {
                         bottomNavigation.selectedItemId = id
                     }
-                    fragmentManager.popBackStack()
+                    supportFragmentManager.popBackStack()
                     localStackCopy.pop()
                 } else {
                     exit()
@@ -98,11 +112,11 @@ class MainActivity : AppCompatActivity() {
 
             private fun getIdFromTabName(name: String?): Int =
                     when (name) {
-                        TabScreens.EVENTS -> R.id.eventsFragment
-                        TabScreens.NEWS -> R.id.newsFragment
-                        TabScreens.RESOURCES -> R.id.resourcesFragment
-                        TabScreens.SCHEDULE -> R.id.scheduleFragment
-                        TabScreens.SETTINGS -> R.id.settingsFragment
+                        Tabs.EVENTS.name -> R.id.eventsFragment
+                        Tabs.NEWS.name -> R.id.newsFragment
+                        Tabs.RESOURCES.name -> R.id.resourcesFragment
+                        Tabs.SCHEDULE.name -> R.id.scheduleFragment
+                        Tabs.SETTINGS.name -> R.id.settingsFragment
                         else -> 0
                     }
 
