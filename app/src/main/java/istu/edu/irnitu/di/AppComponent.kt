@@ -13,15 +13,17 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [
+    // Common modules
     ContextModule::class, NavigationModule::class, RoomModule::class,
-    TimepadModule::class, ResourcesModule::class, NewsModule::class
+    // Screen-specific modules
+    TimepadModule::class, ResourcesModule::class, NewsModule::class, ScheduleModule::class
 ])
 interface AppComponent {
     fun getContext(): Context
 
     fun inject(mainActivity: MainActivity)
     fun inject(eventsPresenter: EventsPresenter)
-    fun inject(eventsPresenter: ResourcesPresenter)
-    fun inject(eventsPresenter: NewsPresenter)
+    fun inject(resourcesPresenter: ResourcesPresenter)
+    fun inject(newsPresenter: NewsPresenter)
     fun inject(eventsAdapter: EventsAdapter)
 }
