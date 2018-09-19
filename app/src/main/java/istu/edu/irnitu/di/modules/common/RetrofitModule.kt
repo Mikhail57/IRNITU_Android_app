@@ -18,16 +18,19 @@ class RetrofitModule {
     @Provides
     @Named("timepad")
     @Singleton
-    fun provideTimepadRetrofit(builder: Retrofit.Builder): Retrofit = builder.baseUrl("https://api.timepad.ru").build()
+    fun provideTimepadRetrofit(builder: Retrofit.Builder): Retrofit =
+        builder.baseUrl("https://api.timepad.ru").build()
 
     @Provides
     @Named("istu")
     @Singleton
-    fun provideIstuRetrofit(builder: Retrofit.Builder): Retrofit = builder.baseUrl("http://194.67.199.63:8080/").build()
+    fun provideIstuRetrofit(builder: Retrofit.Builder): Retrofit =
+        builder.baseUrl("http://194.67.199.63:8080/").build()
 
     @Provides
     @Singleton
-    fun provideRetrofitBuilder(factory: Converter.Factory, client: OkHttpClient): Retrofit.Builder = Retrofit.Builder()
+    fun provideRetrofitBuilder(factory: Converter.Factory, client: OkHttpClient): Retrofit.Builder =
+        Retrofit.Builder()
             .addConverterFactory(factory)
             .client(client)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
@@ -39,9 +42,9 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun provideGson(): Gson = GsonBuilder()
-            .setPrettyPrinting()
-            .serializeNulls()
-            .create()
+        .setPrettyPrinting()
+        .serializeNulls()
+        .create()
 
     @Provides
     @Singleton

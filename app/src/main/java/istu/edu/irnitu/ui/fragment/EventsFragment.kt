@@ -27,8 +27,10 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
 
     private var events: List<Event> = ArrayList()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_events, container, false)
     }
 
@@ -48,11 +50,11 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
 
     override fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            loadingEventsScreen.visibility = View.VISIBLE
-            eventsConstentScreen.visibility = View.GONE
+            eventsLoadingScreen.visibility = View.VISIBLE
+            eventsContentScreen.visibility = View.GONE
         } else {
-            loadingEventsScreen.visibility = View.GONE
-            eventsConstentScreen.visibility = View.VISIBLE
+            eventsLoadingScreen.visibility = View.GONE
+            eventsContentScreen.visibility = View.VISIBLE
         }
     }
 

@@ -7,7 +7,7 @@
     tools:context=".ui.fragment.EventsFragment">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/eventsConstentScreen"
+        android:id="@+id/eventsContentScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
@@ -29,6 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eventsToolbar"
@@ -73,9 +74,10 @@
     </android.support.constraint.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/loadingEventsScreen"
+        android:id="@+id/eventsLoadingScreen"
         style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:visibility="gone" />
 </FrameLayout>

@@ -13,12 +13,12 @@ import javax.inject.Singleton
 class ApiModule {
     @Provides
     @Singleton
-    fun provideTimepadApi(@Named("timepad") retrofit: Retrofit): TimepadApi
-            = retrofit.create(TimepadApi::class.java)
+    fun provideTimepadApi(@Named("timepad") retrofit: Retrofit): TimepadApi =
+        retrofit.create(TimepadApi::class.java)
 
     @Provides
     @Singleton
-    fun provideIrnituApi(@Named("istu") retrofit: Retrofit): IrnituApi
-            = retrofit.create(IrnituApi::class.java)
+    fun provideIrnituApi(@Named("istu") retrofit: Retrofit): IrnituApi =
+        retrofit.create(IrnituApi::class.java)
 
 }

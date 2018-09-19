@@ -12,5 +12,6 @@ import javax.inject.Singleton
 class NewsModule {
     @Provides
     @Singleton
-    fun provideNewsRepository(api: IrnituApi, schedulers: SchedulersProvider): NewsPagedRepository = NewsPagedRepository(api, schedulers)
+    fun provideNewsRepository(api: IrnituApi, schedulers: SchedulersProvider): NewsPagedRepository =
+        NewsPagedRepository(api, schedulers)
 }

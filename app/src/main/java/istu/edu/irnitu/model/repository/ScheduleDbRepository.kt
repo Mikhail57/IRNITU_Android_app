@@ -7,13 +7,13 @@ import istu.edu.irnitu.entity.Faculty
 import istu.edu.irnitu.model.system.SchedulersProvider
 
 class ScheduleDbRepository(
-        private val scheduleDao: ScheduleDao,
-        private val schedulers: SchedulersProvider
+    private val scheduleDao: ScheduleDao,
+    private val schedulers: SchedulersProvider
 ) : ScheduleRepository {
     override fun getGroupSchedule(group: String): Single<List<Class>> {
         return scheduleDao.getScheduleForGroup(group)
-                .subscribeOn(schedulers.io())
-                .observeOn(schedulers.ui())
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
     override fun getGroupScheduleForDay(group: String, day: Int): Single<List<Class>> {
@@ -22,23 +22,23 @@ class ScheduleDbRepository(
                 day == klass.day || (day > 6 && (day - 6 == klass.day) && klass.everyWeek == 2)
             }
         }
-                .subscribeOn(schedulers.io())
-                .observeOn(schedulers.ui())
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
     override fun getGroups(): Single<List<Faculty>> {
         return scheduleDao.getAll().map {
             it.groupBy { klass -> klass.faculty }
-                    .mapValues { classes ->
-                        classes
-                                .value
-                                .groupBy { it.course }
-                                .mapValues { it.value.map { it.group } }
-                    }
-                    .map { Faculty(it.key, it.value) }
+                .mapValues { classes ->
+                    classes
+                        .value
+                        .groupBy { it.course }
+                        .mapValues { it.value.map { it.group } }
+                }
+                .map { Faculty(it.key, it.value) }
         }
-                .subscribeOn(schedulers.io())
-                .observeOn(schedulers.ui())
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
 

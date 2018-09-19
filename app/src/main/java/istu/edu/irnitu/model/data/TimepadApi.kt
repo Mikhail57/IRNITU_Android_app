@@ -10,9 +10,9 @@ interface TimepadApi {
 
     @GET("v1/events")
     fun getEvents(
-            @Query("limit") limit: Int,
-            @Query("sort") sort: String,
-            @Query("fields") fields: String,
-            @Query("organization_ids") organizationId: Int
+        @Query("limit") limit: Int,
+        @Query("sort") sort: String,
+        @Query("fields") fields: String,
+        @Query("organization_ids") organizationId: Int
     ): Single<TimepadResponceWrapper<Event>>
 }

@@ -25,14 +25,15 @@ class EventsPresenter : MvpPresenter<EventsView>() {
         super.onFirstViewAttach()
 
         disposable.add(eventsRepository
-                .getEvents(20)
-                .doOnSubscribe { viewState.showLoading(true) }
-                .doAfterTerminate { viewState.showLoading(false) }
-                .subscribe({
-                    viewState.showEvents(it)
-                }, {
-                    viewState.showLoadingError(it.localizedMessage)
-                }))
+            .getEvents(20)
+            .doOnSubscribe { viewState.showLoading(true) }
+            .doAfterTerminate { viewState.showLoading(false) }
+            .subscribe({
+                viewState.showEvents(it)
+            }, {
+                viewState.showLoadingError(it.localizedMessage)
+            })
+        )
     }
 
     override fun onDestroy() {

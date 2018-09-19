@@ -7,4 +7,7 @@ import istu.edu.irnitu.presentation.view.ScheduleView
 @InjectViewState
 class SchedulePresenter : MvpPresenter<ScheduleView>() {
 
+    override fun onFirstViewAttach() {
+
+    }
 }

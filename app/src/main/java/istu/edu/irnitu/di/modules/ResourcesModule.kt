@@ -12,6 +12,6 @@ import javax.inject.Singleton
 class ResourcesModule {
     @Provides
     @Singleton
-    fun provideLocalResourcesRepository(schedulers: SchedulersProvider): ResourcesRepository
-            = ResourcesStubRepository(schedulers)
+    fun provideLocalResourcesRepository(schedulers: SchedulersProvider): ResourcesRepository =
+        ResourcesStubRepository(schedulers)
 }

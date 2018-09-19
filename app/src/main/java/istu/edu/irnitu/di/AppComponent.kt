@@ -13,12 +13,14 @@ import istu.edu.irnitu.ui.adapters.EventsAdapter
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    // Common modules
-    ContextModule::class, NavigationModule::class, RoomModule::class,
-    // Screen-specific modules
-    TimepadModule::class, ResourcesModule::class, NewsModule::class, ScheduleModule::class
-])
+@Component(
+    modules = [
+        // Common modules
+        ContextModule::class, NavigationModule::class, RoomModule::class,
+        // Screen-specific modules
+        TimepadModule::class, ResourcesModule::class, NewsModule::class, ScheduleModule::class
+    ]
+)
 interface AppComponent {
     fun getContext(): Context
 

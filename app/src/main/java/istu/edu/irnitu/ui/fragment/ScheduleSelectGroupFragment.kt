@@ -27,8 +27,10 @@ class ScheduleSelectGroupFragment : MvpAppCompatFragment(), ScheduleSelectGroupV
     @InjectPresenter
     lateinit var mScheduleSelectGroupPresenter: ScheduleSelectGroupPresenter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_schedule_select_group, container, false)
     }
 

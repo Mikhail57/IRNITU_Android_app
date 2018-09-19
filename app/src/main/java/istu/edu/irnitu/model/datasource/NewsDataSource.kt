@@ -6,8 +6,14 @@ import istu.edu.irnitu.entity.News
 import istu.edu.irnitu.model.repository.NewsPagedRepository
 
 @SuppressLint("CheckResult")
-class NewsDataSource(private val repository: NewsPagedRepository) : PageKeyedDataSource<Int, News>() {
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, News>) {
+class NewsDataSource(
+    private val repository: NewsPagedRepository
+) : PageKeyedDataSource<Int, News>() {
+
+    override fun loadInitial(
+        params: LoadInitialParams<Int>,
+        callback: LoadInitialCallback<Int, News>
+    ) {
         repository.getNews(FIRST_PAGE).subscribe({
             callback.onResult(it, null, FIRST_PAGE + 1)
         }, {})

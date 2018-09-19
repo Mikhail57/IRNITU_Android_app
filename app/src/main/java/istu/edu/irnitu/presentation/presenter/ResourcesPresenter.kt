@@ -21,13 +21,14 @@ class ResourcesPresenter : MvpPresenter<ResourcesView>() {
 
     override fun onFirstViewAttach() {
         disposable.add(repository.getResources()
-                .doOnSubscribe { viewState.showLoading(true) }
-                .doAfterTerminate { viewState.showLoading(false) }
-                .subscribe({
-                    viewState.showResources(it)
-                }, {
-                    viewState.showLoadingError(it.localizedMessage)
-                }))
+            .doOnSubscribe { viewState.showLoading(true) }
+            .doAfterTerminate { viewState.showLoading(false) }
+            .subscribe({
+                viewState.showResources(it)
+            }, {
+                viewState.showLoadingError(it.localizedMessage)
+            })
+        )
     }
 
     override fun onDestroy() {

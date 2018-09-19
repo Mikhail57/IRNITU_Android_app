@@ -14,8 +14,8 @@ class Application : Application() {
         Fresco.initialize(this)
 
         appComponent = DaggerAppComponent.builder()
-                .contextModule(ContextModule(this))
-                .build()
+            .contextModule(ContextModule(this))
+            .build()
     }
 
     companion object {

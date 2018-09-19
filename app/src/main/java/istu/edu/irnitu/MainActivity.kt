@@ -71,16 +71,17 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
     override fun onBackPressed() = presenter.onBackPressed()
 
     private fun initContainers() {
-        navigator = object : RestoringStateSupportFragmentNavigator(supportFragmentManager, R.id.container) {
+        navigator = object :
+            RestoringStateSupportFragmentNavigator(supportFragmentManager, R.id.container) {
             override fun createFragment(screenKey: String, data: Any?): Fragment =
-                    when (screenKey) {
-                        Tabs.EVENTS.name -> EventsFragment.newInstance()
-                        Tabs.NEWS.name -> NewsFragment.newInstance()
-                        Tabs.RESOURCES.name -> ResourcesFragment.newInstance()
-                        Tabs.SCHEDULE.name -> ScheduleFragment.newInstance()
-                        Tabs.SETTINGS.name -> SettingsFragment.newInstance()
-                        else -> TODO("LOL")
-                    }
+                when (screenKey) {
+                    Tabs.EVENTS.name -> EventsFragment.newInstance()
+                    Tabs.NEWS.name -> NewsFragment.newInstance()
+                    Tabs.RESOURCES.name -> ResourcesFragment.newInstance()
+                    Tabs.SCHEDULE.name -> ScheduleFragment.newInstance()
+                    Tabs.SETTINGS.name -> SettingsFragment.newInstance()
+                    else -> TODO("LOL")
+                }
 
             override fun showSystemMessage(message: String?) {
                 Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
@@ -111,14 +112,14 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
 
 
             private fun getIdFromTabName(name: String?): Int =
-                    when (name) {
-                        Tabs.EVENTS.name -> R.id.eventsFragment
-                        Tabs.NEWS.name -> R.id.newsFragment
-                        Tabs.RESOURCES.name -> R.id.resourcesFragment
-                        Tabs.SCHEDULE.name -> R.id.scheduleFragment
-                        Tabs.SETTINGS.name -> R.id.settingsFragment
-                        else -> 0
-                    }
+                when (name) {
+                    Tabs.EVENTS.name -> R.id.eventsFragment
+                    Tabs.NEWS.name -> R.id.newsFragment
+                    Tabs.RESOURCES.name -> R.id.resourcesFragment
+                    Tabs.SCHEDULE.name -> R.id.scheduleFragment
+                    Tabs.SETTINGS.name -> R.id.settingsFragment
+                    else -> 0
+                }
 
         }
         navigatorHolder.setNavigator(navigator)

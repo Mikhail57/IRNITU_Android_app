@@ -12,6 +12,6 @@ import javax.inject.Singleton
 class TimepadModule {
     @Provides
     @Singleton
-    fun provideEventsRepository(api: TimepadApi, schedulers: SchedulersProvider): EventsRepository
-            = EventsRepository(api, schedulers)
+    fun provideEventsRepository(api: TimepadApi, schedulers: SchedulersProvider): EventsRepository =
+        EventsRepository(api, schedulers)
 }

@@ -13,8 +13,10 @@ import javax.inject.Singleton
 class RoomModule {
     @Provides
     @Singleton
-    fun providesAppDatabase(context: Context): AppDatabase = Room.databaseBuilder(context,
-            AppDatabase::class.java, "irnitu-database").build()
+    fun providesAppDatabase(context: Context): AppDatabase = Room.databaseBuilder(
+        context,
+        AppDatabase::class.java, "irnitu-database"
+    ).build()
 
     @Provides
     @Singleton

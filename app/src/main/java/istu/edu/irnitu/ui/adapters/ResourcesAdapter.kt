@@ -12,7 +12,8 @@ import istu.edu.irnitu.entity.Resource
 class ResourcesAdapter(var resources: List<Resource>) : RecyclerView.Adapter<ResourcesAdapter.ResourcesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResourcesViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_resource, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_resource, parent, false)
         return ResourcesViewHolder(view)
     }
 

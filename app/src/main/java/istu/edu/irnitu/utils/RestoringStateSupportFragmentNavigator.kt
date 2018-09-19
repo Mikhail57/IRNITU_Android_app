@@ -8,14 +8,14 @@ import ru.terrakok.cicerone.commands.Forward
 import ru.terrakok.cicerone.commands.Replace
 
 abstract class RestoringStateSupportFragmentNavigator(
-        private val fragmentManager: FragmentManager,
-        @IdRes
-        private val containerId: Int
+    private val fragmentManager: FragmentManager,
+    @IdRes
+    private val containerId: Int
 ) : SupportFragmentNavigator(fragmentManager, containerId) {
 
     override fun forward(command: Forward) {
         val fragment = fragmentManager.findFragmentByTag(command.screenKey)
-                ?: createFragment(command.screenKey, command.transitionData)
+            ?: createFragment(command.screenKey, command.transitionData)
 
         if (fragment == null) {
             unknownScreen(command)
@@ -27,16 +27,16 @@ abstract class RestoringStateSupportFragmentNavigator(
         val fragmentTransaction = fragmentManager.beginTransaction()
 
         setupFragmentTransactionAnimation(
-                command,
-                fragmentManager.findFragmentById(containerId),
-                fragment,
-                fragmentTransaction
+            command,
+            fragmentManager.findFragmentById(containerId),
+            fragment,
+            fragmentTransaction
         )
 
         fragmentTransaction
-                .replace(containerId, fragment, command.screenKey)
-                .addToBackStack(command.screenKey)
-                .commit()
+            .replace(containerId, fragment, command.screenKey)
+            .addToBackStack(command.screenKey)
+            .commit()
 
         localStackCopy.add(command.screenKey)
     }
@@ -44,7 +44,7 @@ abstract class RestoringStateSupportFragmentNavigator(
 
     override fun replace(command: Replace) {
         val fragment = fragmentManager.findFragmentByTag(command.screenKey)
-                ?: createFragment(command.screenKey, command.transitionData)
+            ?: createFragment(command.screenKey, command.transitionData)
 
         if (fragment == null) {
             unknownScreen(command)
@@ -58,33 +58,33 @@ abstract class RestoringStateSupportFragmentNavigator(
             val fragmentTransaction = fragmentManager.beginTransaction()
 
             setupFragmentTransactionAnimation(
-                    command,
-                    fragmentManager.findFragmentById(containerId),
-                    fragment,
-                    fragmentTransaction
+                command,
+                fragmentManager.findFragmentById(containerId),
+                fragment,
+                fragmentTransaction
             )
 
             fragmentManager.primaryNavigationFragment
 
             fragmentTransaction
-                    .replace(containerId, fragment)
-                    .addToBackStack(command.getScreenKey())
-                    .commit()
+                .replace(containerId, fragment)
+                .addToBackStack(command.getScreenKey())
+                .commit()
             localStackCopy.add(command.getScreenKey())
 
         } else {
             val fragmentTransaction = fragmentManager.beginTransaction()
 
             setupFragmentTransactionAnimation(
-                    command,
-                    fragmentManager.findFragmentById(containerId),
-                    fragment,
-                    fragmentTransaction
+                command,
+                fragmentManager.findFragmentById(containerId),
+                fragment,
+                fragmentTransaction
             )
 
             fragmentTransaction
-                    .replace(containerId, fragment, command.screenKey)
-                    .commit()
+                .replace(containerId, fragment, command.screenKey)
+                .commit()
         }
     }
 }

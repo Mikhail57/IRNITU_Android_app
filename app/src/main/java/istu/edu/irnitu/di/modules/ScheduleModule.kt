@@ -17,7 +17,7 @@ class ScheduleModule {
     @Singleton
     @Named("network")
     fun providesScheduleNetworkRepository(
-            api: IrnituApi,
-            schedulers: SchedulersProvider
+        api: IrnituApi,
+        schedulers: SchedulersProvider
     ): ScheduleRepository = ScheduleNetworkRepository(api, schedulers)
 }
