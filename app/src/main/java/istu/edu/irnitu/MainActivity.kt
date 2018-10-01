@@ -57,15 +57,6 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
     }
 
     override fun goToTab(tab: Tabs) {
-//        val id = when (tab) {
-//            Tabs.EVENTS -> R.id.eventsFragment
-//            Tabs.NEWS -> R.id.newsFragment
-//            Tabs.RESOURCES -> R.id.resourcesFragment
-//            Tabs.SCHEDULE -> R.id.scheduleFragment
-//            Tabs.SETTINGS -> R.id.settingsFragment
-//        }
-//        if (id != bottomNavigation.selectedItemId)
-//            bottomNavigation.selectedItemId = id
     }
 
     override fun onBackPressed() = presenter.onBackPressed()
@@ -80,7 +71,7 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
                     Tabs.RESOURCES.name -> ResourcesFragment.newInstance()
                     Tabs.SCHEDULE.name -> ScheduleFragment.newInstance()
                     Tabs.SETTINGS.name -> SettingsFragment.newInstance()
-                    else -> TODO("LOL")
+                    else -> TODO("You should add ")
                 }
 
             override fun showSystemMessage(message: String?) {
@@ -110,7 +101,6 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
                 super.backTo(command)
             }
 
-
             private fun getIdFromTabName(name: String?): Int =
                 when (name) {
                     Tabs.EVENTS.name -> R.id.eventsFragment
@@ -123,54 +113,5 @@ class MainActivity : MvpAppCompatActivity(), MainScreenView {
 
         }
         navigatorHolder.setNavigator(navigator)
-
-
-//        val fm = supportFragmentManager
-//
-//        eventsFragment = fm.findFragmentByTag(EventsFragment.TAG) as EventsFragment?
-//        if (eventsFragment == null) {
-//            eventsFragment = EventsFragment.newInstance()
-//            fm.beginTransaction()
-//                    .add(R.id.container, eventsFragment, EventsFragment.TAG)
-//                    .detach(eventsFragment)
-//                    .commit()
-//        }
-//
-//        newsFragment = fm.findFragmentByTag(NewsFragment.TAG) as NewsFragment?
-//        if (newsFragment == null) {
-//            newsFragment = NewsFragment.newInstance()
-//            fm.beginTransaction()
-//                    .add(R.id.container, newsFragment, NewsFragment.TAG)
-//                    .detach(newsFragment)
-//                    .commit()
-//        }
-//
-//        resourcesFragment = fm.findFragmentByTag(ResourcesFragment.TAG) as ResourcesFragment?
-//        if (resourcesFragment == null) {
-//            resourcesFragment = ResourcesFragment.newInstance()
-//            fm.beginTransaction()
-//                    .add(R.id.container, resourcesFragment, ResourcesFragment.TAG)
-//                    .detach(resourcesFragment)
-//                    .commit()
-//        }
-//
-//        scheduleFragment = fm.findFragmentByTag(ScheduleFragment.TAG) as ScheduleFragment?
-//        if (scheduleFragment == null) {
-//            scheduleFragment = ScheduleFragment.newInstance()
-//            fm.beginTransaction()
-//                    .add(R.id.container, scheduleFragment, ScheduleFragment.TAG)
-//                    .detach(scheduleFragment)
-//                    .commit()
-//        }
-//
-//        settingsFragment = fm.findFragmentByTag(SettingsFragment.TAG) as SettingsFragment?
-//        if (settingsFragment == null) {
-//            settingsFragment = SettingsFragment.newInstance()
-//            fm.beginTransaction()
-//                    .add(R.id.container, settingsFragment, SettingsFragment.TAG)
-//                    .detach(settingsFragment)
-//                    .commit()
-//        }
-
     }
 }
