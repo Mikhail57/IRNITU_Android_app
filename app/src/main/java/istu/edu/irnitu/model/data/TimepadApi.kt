@@ -1,7 +1,7 @@
 package istu.edu.irnitu.model.data
 
 import istu.edu.irnitu.entity.Event
-import istu.edu.irnitu.utils.TimepadResponceWrapper
+import istu.edu.irnitu.utils.TimepadResponseWrapper
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,5 +14,5 @@ interface TimepadApi {
         @Query("sort") sort: String,
         @Query("fields") fields: String,
         @Query("organization_ids") organizationId: Int
-    ): Single<TimepadResponceWrapper<Event>>
+    ): Single<TimepadResponseWrapper<Event>>
 }

@@ -2,7 +2,7 @@ package istu.edu.irnitu.utils
 
 import com.google.gson.annotations.SerializedName
 
-data class TimepadResponceWrapper<T>(
+data class TimepadResponseWrapper<T>(
 
     @field:SerializedName("total")
     val total: Int,
