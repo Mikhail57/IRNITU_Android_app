@@ -22,7 +22,7 @@ android {
     }
 }
 
-def supportVersion = '28.0.0-rc02'
+def supportVersion = '28.0.0'
 def moxyVersion = '1.5.3'
 def retrofitVersion = '2.4.0'
 def rxjavaVersion = '2.1.1'
