@@ -9,7 +9,8 @@ import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.SelectGroupView
 import istu.edu.irnitu.presentation.presenter.SelectGroupPresenter
 
-import                  com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.MvpAppCompatActivity
+import kotlinx.android.synthetic.main.activity_select_group.*
 
 
 class SelectGroupActivity : MvpAppCompatActivity(), SelectGroupView {
@@ -25,5 +26,6 @@ class SelectGroupActivity : MvpAppCompatActivity(), SelectGroupView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_group)
+
     }
 }

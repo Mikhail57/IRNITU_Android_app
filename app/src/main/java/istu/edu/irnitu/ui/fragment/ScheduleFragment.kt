@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.ScheduleView
@@ -35,6 +36,13 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    override fun goToSelectGroupScreen() {
+        Toast.makeText(context, "Go to select group group", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showSchedule() {
+        Toast.makeText(context, "Show schedule", Toast.LENGTH_SHORT).show()
     }
 }
