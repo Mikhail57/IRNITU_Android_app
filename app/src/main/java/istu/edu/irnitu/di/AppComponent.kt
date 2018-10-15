@@ -5,10 +5,8 @@ import dagger.Component
 import istu.edu.irnitu.MainActivity
 import istu.edu.irnitu.di.modules.*
 import istu.edu.irnitu.di.modules.common.ContextModule
-import istu.edu.irnitu.presentation.presenter.EventsPresenter
-import istu.edu.irnitu.presentation.presenter.MainScreenPresenter
-import istu.edu.irnitu.presentation.presenter.NewsPresenter
-import istu.edu.irnitu.presentation.presenter.ResourcesPresenter
+import istu.edu.irnitu.di.modules.common.PreferencesModule
+import istu.edu.irnitu.presentation.presenter.*
 import istu.edu.irnitu.ui.adapters.EventsAdapter
 import javax.inject.Singleton
 
@@ -16,7 +14,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         // Common modules
-        ContextModule::class, NavigationModule::class, RoomModule::class,
+        ContextModule::class, NavigationModule::class, RoomModule::class, PreferencesModule::class,
         // Screen-specific modules
         TimepadModule::class, ResourcesModule::class, NewsModule::class, ScheduleModule::class
     ]
@@ -30,4 +28,5 @@ interface AppComponent {
     fun inject(newsPresenter: NewsPresenter)
     fun inject(eventsAdapter: EventsAdapter)
     fun inject(mainScreenPresenter: MainScreenPresenter)
+    fun inject(schedulePresenter: SchedulePresenter)
 }
