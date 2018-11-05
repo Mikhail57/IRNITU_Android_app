@@ -38,8 +38,8 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun goToSelectGroupScreen() {
-        Toast.makeText(context, "Go to select group group", Toast.LENGTH_SHORT).show()
+    override fun showSelectGroup() {
+
     }
 
     override fun showSchedule() {
