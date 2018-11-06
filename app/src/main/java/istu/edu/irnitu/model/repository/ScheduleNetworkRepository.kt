@@ -1,5 +1,6 @@
 package istu.edu.irnitu.model.repository
 
+import android.util.Log
 import io.reactivex.Single
 import istu.edu.irnitu.entity.Class
 import istu.edu.irnitu.entity.Faculty
@@ -17,7 +18,7 @@ class ScheduleNetworkRepository(
     override fun getGroupScheduleForDay(group: String, day: Int): Single<List<Class>> =
         getGroupSchedule(group).map {
             it.filter { klass ->
-                day == klass.day || (day > 6 && (day - 6 == klass.day) && klass.everyWeek == 2)
+                day == klass.day || (day > 7 && (day - 7 == klass.day) && klass.everyWeek == 2)
             }
         }
 

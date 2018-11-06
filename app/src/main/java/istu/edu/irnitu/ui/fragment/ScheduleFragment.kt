@@ -11,6 +11,7 @@ import istu.edu.irnitu.presentation.view.ScheduleView
 import istu.edu.irnitu.presentation.presenter.SchedulePresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
+import istu.edu.irnitu.entity.ScheduleDay
 
 class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     companion object {
@@ -42,7 +43,7 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
 
     }
 
-    override fun showSchedule() {
-        Toast.makeText(context, "Show schedule", Toast.LENGTH_SHORT).show()
+    override fun showSchedule(schedule: ScheduleDay) {
+
     }
 }
