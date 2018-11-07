@@ -13,7 +13,7 @@ class ScheduleAdapter(
 ) : RecyclerView.Adapter<ScheduleAdapter.BaseScheduleViewHolder>() {
     override fun onCreateViewHolder(view: ViewGroup, itemViewType: Int): BaseScheduleViewHolder {
         return when (ScheduleItemTypes.values()[itemViewType]) {
-            ScheduleItemTypes.TITLE -> BaseScheduleViewHolder.DayTitleviewHolder(view)
+            ScheduleItemTypes.TITLE -> BaseScheduleViewHolder.DayTitleViewHolder(view)
             ScheduleItemTypes.SINGLE -> BaseScheduleViewHolder.ClassItemViewHolder(view)
             ScheduleItemTypes.DOUBLE -> BaseScheduleViewHolder.ClassItemDoubledViewHolder(view)
         }
@@ -24,7 +24,7 @@ class ScheduleAdapter(
     override fun onBindViewHolder(vh: BaseScheduleViewHolder, position: Int) {
         val klass = if (position > 1) schedule[position - 1] else null
         when (vh) {
-            is BaseScheduleViewHolder.DayTitleviewHolder -> vh.bind(day)
+            is BaseScheduleViewHolder.DayTitleViewHolder -> vh.bind(day)
             is BaseScheduleViewHolder.ClassItemViewHolder -> vh.bind(klass!!)
             is BaseScheduleViewHolder.ClassItemDoubledViewHolder -> vh.bind(klass!!)
         }
@@ -44,8 +44,8 @@ class ScheduleAdapter(
 
     sealed class BaseScheduleViewHolder(internal val view: View) : RecyclerView.ViewHolder(view) {
 
-        class DayTitleviewHolder(view: View) : BaseScheduleViewHolder(view) {
-            private val day: TextView = view.findViewById(R.id.title)
+        class DayTitleViewHolder(view: View) : BaseScheduleViewHolder(view) {
+            private val day: TextView = view.findViewById(R.id.dayTitle)
 
             fun bind(day: String) {
                 this.day.text = day
@@ -62,17 +62,36 @@ class ScheduleAdapter(
             fun bind(klass: Class) {
                 title.text = klass.title
                 teacher.text = klass.teacher
-                val startTimeSplited = klass.beginTime.split(':')
-                startHour.text = startTimeSplited[0]
-                startMinute.text = startTimeSplited[1]
+                val startTimeSplitted = klass.beginTime.split(':')
+                startHour.text = startTimeSplitted[0]
+                startMinute.text = startTimeSplitted[1]
                 endTime.text = klass.endTime
             }
         }
 
         class ClassItemDoubledViewHolder(view: View) : BaseScheduleViewHolder(view) {
+            private val title: TextView = view.findViewById(R.id.classTitle)
+            private val title2: TextView = view.findViewById(R.id.classTitle2)
+            private val teacher: TextView = view.findViewById(R.id.classTeacher)
+            private val teacher2: TextView = view.findViewById(R.id.classTeacher2)
+            private val startHour: TextView = view.findViewById(R.id.classStartHour)
+            private val startMinute: TextView = view.findViewById(R.id.classStartMinute)
+            private val endTime: TextView = view.findViewById(R.id.classEndTime)
 
             fun bind(klass: Class) {
+                val titles = klass.title.split('@')
+                title.text = titles[0]
+                title2.text = titles[1]
 
+                val teachers = klass.teacher.split('@')
+                teacher.text = teachers[0]
+                teacher2.text = teachers[1]
+
+                val startTimeSplitted = klass.beginTime.split(':')
+                startHour.text = startTimeSplitted[0]
+                startMinute.text = startTimeSplitted[1]
+
+                endTime.text = klass.endTime
             }
         }
     }
