@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="classType">
+        <item name="android:paddingLeft">8sp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="lecture" parent="classType">
+        <item name="android:background">@color/colorLectureBackground</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="practice" parent="classType">
+        <item name="android:background">@color/colorPracticeBackground</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="lab" parent="classType">
+        <item name="android:background">@color/colorLabBackground</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

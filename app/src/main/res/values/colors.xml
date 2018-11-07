@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorEventTitle">#707070</color>
     <color name="colorLectureBackground">#16af16</color>
+    <color name="colorPracticeBackground">#1684af</color>
+    <color name="colorLabBackground">#7916af</color>
 </resources>

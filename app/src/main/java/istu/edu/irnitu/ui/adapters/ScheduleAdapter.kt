@@ -1,6 +1,8 @@
 package istu.edu.irnitu.ui.adapters
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -11,18 +13,28 @@ class ScheduleAdapter(
     private val schedule: List<Class>,
     private val day: String
 ) : RecyclerView.Adapter<ScheduleAdapter.BaseScheduleViewHolder>() {
-    override fun onCreateViewHolder(view: ViewGroup, itemViewType: Int): BaseScheduleViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, itemViewType: Int): BaseScheduleViewHolder {
         return when (ScheduleItemTypes.values()[itemViewType]) {
-            ScheduleItemTypes.TITLE -> BaseScheduleViewHolder.DayTitleViewHolder(view)
-            ScheduleItemTypes.SINGLE -> BaseScheduleViewHolder.ClassItemViewHolder(view)
-            ScheduleItemTypes.DOUBLE -> BaseScheduleViewHolder.ClassItemDoubledViewHolder(view)
+            ScheduleItemTypes.TITLE -> BaseScheduleViewHolder.DayTitleViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_day_title, parent, false)
+            )
+            ScheduleItemTypes.SINGLE -> BaseScheduleViewHolder.ClassItemViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_class, parent, false)
+            )
+            ScheduleItemTypes.DOUBLE -> BaseScheduleViewHolder.ClassItemDoubledViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_class_double, parent, false)
+            )
         }
     }
 
     override fun getItemCount(): Int = schedule.size + 1
 
     override fun onBindViewHolder(vh: BaseScheduleViewHolder, position: Int) {
-        val klass = if (position > 1) schedule[position - 1] else null
+        val klass = if (position > 0) schedule[position - 1] else null
         when (vh) {
             is BaseScheduleViewHolder.DayTitleViewHolder -> vh.bind(day)
             is BaseScheduleViewHolder.ClassItemViewHolder -> vh.bind(klass!!)
@@ -54,6 +66,7 @@ class ScheduleAdapter(
 
         class ClassItemViewHolder(view: View) : BaseScheduleViewHolder(view) {
             private val title: TextView = view.findViewById(R.id.classTitle)
+            private val type: TextView = view.findViewById(R.id.classType)
             private val teacher: TextView = view.findViewById(R.id.classTeacher)
             private val startHour: TextView = view.findViewById(R.id.classStartHour)
             private val startMinute: TextView = view.findViewById(R.id.classStartMinute)
@@ -61,6 +74,7 @@ class ScheduleAdapter(
 
             fun bind(klass: Class) {
                 title.text = klass.title
+                type.text = getReadableClassType(klass.type).readableTitle
                 teacher.text = klass.teacher
                 val startTimeSplitted = klass.beginTime.split(':')
                 startHour.text = startTimeSplitted[0]
@@ -72,6 +86,8 @@ class ScheduleAdapter(
         class ClassItemDoubledViewHolder(view: View) : BaseScheduleViewHolder(view) {
             private val title: TextView = view.findViewById(R.id.classTitle)
             private val title2: TextView = view.findViewById(R.id.classTitle2)
+            private val type: TextView = view.findViewById(R.id.classType)
+            private val type2: TextView = view.findViewById(R.id.classType2)
             private val teacher: TextView = view.findViewById(R.id.classTeacher)
             private val teacher2: TextView = view.findViewById(R.id.classTeacher2)
             private val startHour: TextView = view.findViewById(R.id.classStartHour)
@@ -82,6 +98,10 @@ class ScheduleAdapter(
                 val titles = klass.title.split('@')
                 title.text = titles[0]
                 title2.text = titles[1]
+
+                val types = klass.type.split('@')
+                type.text = getReadableClassType(types[0]).readableTitle
+                type2.text = getReadableClassType(types[1]).readableTitle
 
                 val teachers = klass.teacher.split('@')
                 teacher.text = teachers[0]
@@ -94,12 +114,21 @@ class ScheduleAdapter(
                 endTime.text = klass.endTime
             }
         }
+
+        fun getReadableClassType(classType: String) =
+            ClassType.values().find { it.title == classType }!!
     }
 
     enum class ScheduleItemTypes {
         TITLE,
         SINGLE,
         DOUBLE
+    }
+
+    enum class ClassType(val title: String, val readableTitle: String) {
+        LECTURE("1. Лекц.", "Лекция"),
+        PRACTICE("2. Практ.", "Практика"),
+        LAB("3. Лаб. раб.", "Лабораторная работа")
     }
 
 }
