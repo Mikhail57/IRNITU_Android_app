@@ -3,14 +3,14 @@ package istu.edu.irnitu.model.repository
 import android.content.Context
 import istu.edu.irnitu.utils.getStringOrNull
 
-interface PreferencesRepository {
+interface PreferencesProvider {
     fun get(key: String): String?
     fun set(key: String, value: String)
 }
 
-class SharedPreferencesRepository(
+class SharedPreferencesProvider(
     val context: Context
-) : PreferencesRepository {
+) : PreferencesProvider {
 
     override fun get(key: String): String? {
         val preferences = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)

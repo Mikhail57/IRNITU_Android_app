@@ -7,4 +7,5 @@
     <color name="colorLectureBackground">#16af16</color>
     <color name="colorPracticeBackground">#1684af</color>
     <color name="colorLabBackground">#7916af</color>
+    <color name="colorDayTitleBg">#1684af</color>
 </resources>
