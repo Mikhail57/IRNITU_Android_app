@@ -16,6 +16,10 @@ import javax.inject.Inject
 @InjectViewState
 class SchedulePresenter : MvpPresenter<ScheduleView>() {
 
+    companion object {
+        const val TAG = "SchedulePresenter"
+    }
+
     @Inject
     lateinit var preferences: PreferencesProvider
 
@@ -34,14 +38,14 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
         val calendar = GregorianCalendar()
         val week = calendar.get(Calendar.WEEK_OF_YEAR) % 2
         val day = getDay(calendar.get(Calendar.DAY_OF_WEEK)) + week * 7
-        Log.i(this.javaClass.canonicalName, "Day $day")
+        Log.d(TAG, "Day $day")
 
         disposable.add(scheduleRepository.getGroupScheduleForDay(group, day).subscribe({
             val date = DateFormat.format("EEEE, dd MMMM", calendar).toString()
             val schedule = ScheduleDay(date, it)
             viewState.showSchedule(schedule)
-            Log.i(this.javaClass.canonicalName, it.toString())
-            Log.i(this.javaClass.canonicalName, "Size: ${it.size}")
+            Log.d(TAG, it.toString())
+            Log.d(TAG, "Size: ${it.size}")
         }, {
 
         }))
