@@ -31,7 +31,6 @@ private const val ARG_GROUP_PARAM = "group"
  * create an instance of this fragment.
  */
 class ScheduleDayVPFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var day: Int? = null
     private var dayString: String? = null
     private var group: String? = null
@@ -57,6 +56,9 @@ class ScheduleDayVPFragment : Fragment() {
         Application.appComponent.inject(this)
 
         disposable.add(scheduleRepository.getGroupScheduleForDay(group!!, day!!).subscribe({
+            if (this@ScheduleDayVPFragment == null) {
+                return@subscribe
+            }
             scheduleRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = ScheduleAdapter(it, dayString ?: "Unknown day...")
@@ -83,7 +85,6 @@ class ScheduleDayVPFragment : Fragment() {
          * @param day Day for schedule.
          * @return A new instance of fragment ScheduleDayVPFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(group: String, day: Int, dayString: String) =
             ScheduleDayVPFragment().apply {

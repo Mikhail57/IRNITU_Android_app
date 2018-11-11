@@ -12,6 +12,7 @@ class ScheduleNetworkRepository(
     private val schedulers: SchedulersProvider
 ) : ScheduleRepository {
     override fun getGroupSchedule(group: String): Single<List<Class>> = api.getGroupSchedule(group)
+        .map { it.sortedBy { klass -> klass.beginTime.substringBefore(':').toInt() } }
         .subscribeOn(schedulers.io())
         .observeOn(schedulers.ui())
 

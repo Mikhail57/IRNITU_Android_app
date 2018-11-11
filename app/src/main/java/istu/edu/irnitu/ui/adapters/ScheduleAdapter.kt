@@ -68,6 +68,7 @@ class ScheduleAdapter(
             private val title: TextView = view.findViewById(R.id.classTitle)
             private val type: TextView = view.findViewById(R.id.classType)
             private val teacher: TextView = view.findViewById(R.id.classTeacher)
+            private val room: TextView = view.findViewById(R.id.classRoom)
             private val startHour: TextView = view.findViewById(R.id.classStartHour)
             private val startMinute: TextView = view.findViewById(R.id.classStartMinute)
             private val endTime: TextView = view.findViewById(R.id.classEndTime)
@@ -76,6 +77,7 @@ class ScheduleAdapter(
                 title.text = klass.title
                 type.text = getReadableClassType(klass.type).readableTitle
                 teacher.text = klass.teacher
+                room.text = klass.room
                 val startTimeSplitted = klass.beginTime.split(':')
                 startHour.text = startTimeSplitted[0]
                 startMinute.text = startTimeSplitted[1]
@@ -90,6 +92,8 @@ class ScheduleAdapter(
             private val type2: TextView = view.findViewById(R.id.classType2)
             private val teacher: TextView = view.findViewById(R.id.classTeacher)
             private val teacher2: TextView = view.findViewById(R.id.classTeacher2)
+            private val room: TextView = view.findViewById(R.id.classRoom)
+            private val room2: TextView = view.findViewById(R.id.classRoom2)
             private val startHour: TextView = view.findViewById(R.id.classStartHour)
             private val startMinute: TextView = view.findViewById(R.id.classStartMinute)
             private val endTime: TextView = view.findViewById(R.id.classEndTime)
@@ -106,6 +110,10 @@ class ScheduleAdapter(
                 val teachers = klass.teacher.split('@')
                 teacher.text = teachers[0]
                 teacher2.text = teachers[1]
+
+                val rooms = klass.room.split('@')
+                room.text = rooms[0]
+                room2.text = rooms[1]
 
                 val startTimeSplitted = klass.beginTime.split(':')
                 startHour.text = startTimeSplitted[0]

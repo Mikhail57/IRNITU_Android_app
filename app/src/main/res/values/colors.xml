@@ -8,4 +8,6 @@
     <color name="colorPracticeBackground">#1684af</color>
     <color name="colorLabBackground">#7916af</color>
     <color name="colorDayTitleBg">#1684af</color>
+    <color name="colorDayItemBg">#eaeaea</color>
+    <color name="colorClassDivider">#acacac</color>
 </resources>
