@@ -1,7 +1,6 @@
 package istu.edu.irnitu.ui.fragment
 
 import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -13,7 +12,6 @@ import io.reactivex.disposables.CompositeDisposable
 import istu.edu.irnitu.Application
 
 import istu.edu.irnitu.R
-import istu.edu.irnitu.entity.ScheduleDay
 import istu.edu.irnitu.model.repository.ScheduleRepository
 import istu.edu.irnitu.ui.adapters.ScheduleAdapter
 import kotlinx.android.synthetic.main.fragment_schedule_day.*
@@ -23,6 +21,7 @@ import javax.inject.Inject
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_DAY_PARAM = "day"
+private const val ARG_DAY_STRING_PARAM = "day-str"
 private const val ARG_GROUP_PARAM = "group"
 
 /**
@@ -34,6 +33,7 @@ private const val ARG_GROUP_PARAM = "group"
 class ScheduleDayVPFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var day: Int? = null
+    private var dayString: String? = null
     private var group: String? = null
 
     private val disposable = CompositeDisposable()
@@ -45,6 +45,7 @@ class ScheduleDayVPFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             day = it.getInt(ARG_DAY_PARAM)
+            dayString = it.getString(ARG_DAY_STRING_PARAM)
             group = it.getString(ARG_GROUP_PARAM)
         }
     }
@@ -56,11 +57,9 @@ class ScheduleDayVPFragment : Fragment() {
         Application.appComponent.inject(this)
 
         disposable.add(scheduleRepository.getGroupScheduleForDay(group!!, day!!).subscribe({
-            val calendar = GregorianCalendar()
-            val date = DateFormat.format("EEEE, dd MMMM", calendar).toString()
             scheduleRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ScheduleAdapter(it, date)
+                adapter = ScheduleAdapter(it, dayString ?: "Unknown day...")
             }
         }, {}))
         // Inflate the layout for this fragment
@@ -86,10 +85,11 @@ class ScheduleDayVPFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(day: Int, group: String) =
+        fun newInstance(group: String, day: Int, dayString: String) =
             ScheduleDayVPFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_DAY_PARAM, day)
+                    putString(ARG_DAY_STRING_PARAM, dayString)
                     putString(ARG_GROUP_PARAM, group)
                 }
             }
