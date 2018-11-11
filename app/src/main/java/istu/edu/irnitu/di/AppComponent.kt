@@ -8,6 +8,7 @@ import istu.edu.irnitu.di.modules.common.ContextModule
 import istu.edu.irnitu.di.modules.common.PreferencesModule
 import istu.edu.irnitu.presentation.presenter.*
 import istu.edu.irnitu.ui.adapters.EventsAdapter
+import istu.edu.irnitu.ui.fragment.ScheduleDayVPFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -29,4 +30,5 @@ interface AppComponent {
     fun inject(eventsAdapter: EventsAdapter)
     fun inject(mainScreenPresenter: MainScreenPresenter)
     fun inject(schedulePresenter: SchedulePresenter)
+    fun inject(scheduleDayVPFragment: ScheduleDayVPFragment)
 }

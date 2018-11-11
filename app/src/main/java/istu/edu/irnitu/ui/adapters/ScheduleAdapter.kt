@@ -115,8 +115,10 @@ class ScheduleAdapter(
             }
         }
 
-        fun getReadableClassType(classType: String) =
-            ClassType.values().find { it.title == classType }!!
+        fun getReadableClassType(classType: String): ClassType {
+            Log.w("BaseScheduleViewHolder", "classType=$classType")
+            return ClassType.values().find { it.title == classType.trim() }!!
+        }
     }
 
     enum class ScheduleItemTypes {
@@ -126,7 +128,7 @@ class ScheduleAdapter(
     }
 
     enum class ClassType(val title: String, val readableTitle: String) {
-        LECTURE("1. Лекц.", "Лекция"),
+        LECTURE("1. Лекция", "Лекция"),
         PRACTICE("2. Практ.", "Практика"),
         LAB("3. Лаб. раб.", "Лабораторная работа")
     }

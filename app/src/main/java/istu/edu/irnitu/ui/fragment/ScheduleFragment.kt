@@ -1,21 +1,18 @@
 package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.support.v4.app.FragmentPagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.ScheduleView
 import istu.edu.irnitu.presentation.presenter.SchedulePresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
-import istu.edu.irnitu.ui.adapters.ScheduleAdapter
 import kotlinx.android.synthetic.main.fragment_schedule.*
-import istu.edu.irnitu.entity.ScheduleDay
+import istu.edu.irnitu.ui.adapters.SchedulePagerAdapter
 
 class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     companion object {
@@ -32,8 +29,7 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     @InjectPresenter
     lateinit var mSchedulePresenter: SchedulePresenter
 
-    private lateinit var viewAdapter: ScheduleAdapter
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var pagerAdapter: FragmentPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,20 +38,12 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun showSelectGroup() {
 
     }
 
-    override fun showSchedule(schedule: ScheduleDay) {
-        viewAdapter = ScheduleAdapter(schedule.classes, schedule.day)
-        viewManager = LinearLayoutManager(context)
-        scheduleRecyclerView.apply {
-            adapter = viewAdapter
-            layoutManager = viewManager
-        }
+    override fun showSchedule(group: String) {
+        pagerAdapter = SchedulePagerAdapter(childFragmentManager, group)
+        scheduleViewPager.adapter = pagerAdapter
     }
 }

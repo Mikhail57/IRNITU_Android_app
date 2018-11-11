@@ -5,5 +5,5 @@ import istu.edu.irnitu.entity.ScheduleDay
 
 interface ScheduleView : MvpView {
     fun showSelectGroup()
-    fun showSchedule(schedule: ScheduleDay)
+    fun showSchedule(group: String)
 }

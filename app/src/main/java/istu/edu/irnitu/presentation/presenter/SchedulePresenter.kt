@@ -39,17 +39,7 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
         val week = calendar.get(Calendar.WEEK_OF_YEAR) % 2
         val day = getDay(calendar.get(Calendar.DAY_OF_WEEK)) + week * 7
         Log.d(TAG, "Day $day")
-
-        disposable.add(scheduleRepository.getGroupScheduleForDay(group, day).subscribe({
-            val date = DateFormat.format("EEEE, dd MMMM", calendar).toString()
-            val schedule = ScheduleDay(date, it)
-            viewState.showSchedule(schedule)
-            Log.d(TAG, it.toString())
-            Log.d(TAG, "Size: ${it.size}")
-        }, {
-
-        }))
-
+        viewState.showSchedule(group)
     }
 
     private fun getDay(calendarDay: Int) = if (calendarDay > 1) calendarDay - 1 else 7
