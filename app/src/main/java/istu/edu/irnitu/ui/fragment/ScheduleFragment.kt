@@ -11,6 +11,7 @@ import istu.edu.irnitu.presentation.view.ScheduleView
 import istu.edu.irnitu.presentation.presenter.SchedulePresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
+import istu.edu.irnitu.ui.activity.SelectGroupActivity
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import istu.edu.irnitu.ui.adapters.SchedulePagerAdapter
 
@@ -39,10 +40,18 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     }
 
     override fun showSelectGroup() {
+        scheduleNoGroup.visibility = View.VISIBLE
+        scheduleViewPager.visibility = View.GONE
 
+        scheduleNoGroup.buttonOnClickListener = View.OnClickListener {
+            startActivity(SelectGroupActivity.getIntent(context!!))
+        }
     }
 
     override fun showSchedule(group: String) {
+        scheduleNoGroup.visibility = View.GONE
+        scheduleViewPager.visibility = View.VISIBLE
+
         pagerAdapter = SchedulePagerAdapter(childFragmentManager, group)
         scheduleViewPager.adapter = pagerAdapter
     }

@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="StatusView">
+        <attr name="statusText" format="string" />
+        <attr name="statusButtonText" format="string" />
+        <attr name="statusColor" format="color" />
+        <attr name="statusDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>

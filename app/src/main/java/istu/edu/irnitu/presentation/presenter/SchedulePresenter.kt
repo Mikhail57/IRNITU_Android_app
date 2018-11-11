@@ -33,8 +33,8 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
     }
 
     override fun onFirstViewAttach() {
-//        val group = preferences.get("selectedGroup") ?: return viewState.showSelectGroup()
-        val group = "ЭВМБ-18-1"
+        val group = preferences.get("selectedGroup") ?: return viewState.showSelectGroup()
+//        val group = "ЭВМБ-18-1"
         val calendar = GregorianCalendar()
         val week = calendar.get(Calendar.WEEK_OF_YEAR) % 2
         val day = getDay(calendar.get(Calendar.DAY_OF_WEEK)) + week * 7

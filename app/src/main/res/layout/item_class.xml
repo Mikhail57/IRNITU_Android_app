@@ -99,7 +99,7 @@
         android:layout_marginLeft="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="48dp"
-        android:background="@color/colorClassDivider"
+        android:background="@drawable/class_divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classTeacher" />
