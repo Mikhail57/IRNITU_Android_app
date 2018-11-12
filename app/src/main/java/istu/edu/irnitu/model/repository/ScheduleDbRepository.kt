@@ -41,6 +41,10 @@ class ScheduleDbRepository(
             .observeOn(schedulers.ui())
     }
 
+    override fun insertSchedule(classes: List<Class>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 }
 
