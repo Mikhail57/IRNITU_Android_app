@@ -15,7 +15,7 @@ import javax.inject.Singleton
 class ScheduleModule {
     @Provides
     @Singleton
-//    @Named("network")
+    @Named("network")
     fun providesScheduleNetworkRepository(
         api: IrnituApi,
         schedulers: SchedulersProvider

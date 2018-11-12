@@ -1,17 +1,15 @@
 package istu.edu.irnitu.presentation.presenter
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.disposables.CompositeDisposable
 import istu.edu.irnitu.Application
-import istu.edu.irnitu.entity.ScheduleDay
+import istu.edu.irnitu.entity.Faculty
 import istu.edu.irnitu.model.repository.PreferencesProvider
 import istu.edu.irnitu.model.repository.ScheduleRepository
 import istu.edu.irnitu.presentation.view.ScheduleView
-import android.text.format.DateFormat
-import java.util.*
 import javax.inject.Inject
+import javax.inject.Named
 
 @InjectViewState
 class SchedulePresenter : MvpPresenter<ScheduleView>() {
@@ -24,21 +22,20 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
     lateinit var preferences: PreferencesProvider
 
     @Inject
-    lateinit var scheduleRepository: ScheduleRepository
+    @Named("network")
+    lateinit var scheduleNetworkRepository: ScheduleRepository
 
     private val disposable = CompositeDisposable()
+
+    private var groups: List<Faculty>? = null
 
     init {
         Application.appComponent.inject(this)
     }
 
     override fun onFirstViewAttach() {
-        val group = preferences.get("selectedGroup") ?: return viewState.showSelectGroup()
+        val group = preferences.get("selectedGroup") ?: return viewState.showSelectGroupButton()
 //        val group = "ЭВМБ-18-1"
-        val calendar = GregorianCalendar()
-        val week = calendar.get(Calendar.WEEK_OF_YEAR) % 2
-        val day = getDay(calendar.get(Calendar.DAY_OF_WEEK)) + week * 7
-        Log.d(TAG, "Day $day")
         viewState.showSchedule(group)
     }
 
@@ -47,4 +44,14 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
     override fun onDestroy() {
         disposable.dispose()
     }
+
+    fun loadGroupsFromNetwork() {
+        viewState.showLoading("Загрузка списка факультетов...")
+        disposable.add(scheduleNetworkRepository.getGroups().subscribe({
+            this.groups = it
+            val faculties = it.map(Faculty::title)
+            viewState.showSelectFacultyList(faculties)
+        }, {}))
+    }
+
 }

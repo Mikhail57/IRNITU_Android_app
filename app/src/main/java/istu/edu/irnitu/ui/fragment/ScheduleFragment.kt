@@ -11,26 +11,29 @@ import istu.edu.irnitu.presentation.view.ScheduleView
 import istu.edu.irnitu.presentation.presenter.SchedulePresenter
 
 import com.arellomobile.mvp.presenter.InjectPresenter
-import istu.edu.irnitu.ui.activity.SelectGroupActivity
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import istu.edu.irnitu.ui.adapters.SchedulePagerAdapter
+import istu.edu.irnitu.ui.dialog.LoadingDialog
 
 class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     companion object {
         const val TAG = "ScheduleFragment"
 
         fun newInstance(): ScheduleFragment {
-            val fragment: ScheduleFragment = ScheduleFragment()
-            val args: Bundle = Bundle()
+            val fragment = ScheduleFragment()
+            val args = Bundle()
             fragment.arguments = args
             return fragment
         }
+
     }
 
     @InjectPresenter
     lateinit var mSchedulePresenter: SchedulePresenter
 
     private lateinit var pagerAdapter: FragmentPagerAdapter
+
+    private var loadingDialog: LoadingDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +42,14 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
         return inflater.inflate(R.layout.fragment_schedule, container, false)
     }
 
-    override fun showSelectGroup() {
+    override fun showSelectGroupButton() {
         scheduleNoGroup.visibility = View.VISIBLE
         scheduleViewPager.visibility = View.GONE
 
         scheduleNoGroup.buttonOnClickListener = View.OnClickListener {
-            startActivity(SelectGroupActivity.getIntent(context!!))
+            mSchedulePresenter.loadGroupsFromNetwork()
+            val dialog = LoadingDialog.newInstance("Lol", "Kek")
+            dialog.show(fragmentManager, "LOL")
         }
     }
 
@@ -54,5 +59,26 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
 
         pagerAdapter = SchedulePagerAdapter(childFragmentManager, group)
         scheduleViewPager.adapter = pagerAdapter
+    }
+
+    override fun showLoading(reason: String) {
+        loadingDialog = LoadingDialog.newInstance("Загрузка...", reason)
+        loadingDialog?.show(fragmentManager, "loading")
+    }
+
+    override fun hideLoading() {
+        loadingDialog?.dismiss()
+    }
+
+    override fun showSelectFacultyList(faculties: List<String>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showSelectCourseList(courses: List<String>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showSelectGroupList(groups: List<String>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
