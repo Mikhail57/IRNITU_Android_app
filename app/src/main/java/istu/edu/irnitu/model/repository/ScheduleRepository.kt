@@ -8,4 +8,5 @@ interface ScheduleRepository {
     fun getGroupSchedule(group: String): Single<List<Class>>
     fun getGroupScheduleForDay(group: String, day: Int): Single<List<Class>>
     fun getGroups(): Single<List<Faculty>>
+    fun insertSchedule(classes: List<Class>)
 }

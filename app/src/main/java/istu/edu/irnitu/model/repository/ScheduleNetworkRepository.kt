@@ -11,6 +11,10 @@ class ScheduleNetworkRepository(
     private val api: IrnituApi,
     private val schedulers: SchedulersProvider
 ) : ScheduleRepository {
+    override fun insertSchedule(classes: List<Class>) {
+        Log.d("ScheduleNetworkRepo", "Stub method called")
+    }
+
     override fun getGroupSchedule(group: String): Single<List<Class>> = api.getGroupSchedule(group)
         .map {
             it.sortedBy { klass -> klass.beginTime.substringBefore(':').toInt() }

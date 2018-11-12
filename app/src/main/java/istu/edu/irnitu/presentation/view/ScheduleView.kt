@@ -4,6 +4,7 @@ import com.arellomobile.mvp.MvpView
 import istu.edu.irnitu.entity.ScheduleDay
 
 interface ScheduleView : MvpView {
+    fun showError(reason: String)
     fun showSelectGroupButton()
     fun showSchedule(group: String)
     fun showLoading(reason: String)

@@ -1,10 +1,12 @@
 package istu.edu.irnitu.ui.fragment
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.FragmentPagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.ScheduleView
@@ -14,6 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import istu.edu.irnitu.ui.adapters.SchedulePagerAdapter
 import istu.edu.irnitu.ui.dialog.LoadingDialog
+import istu.edu.irnitu.ui.dialog.SelectDialog
 
 class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     companion object {
@@ -71,14 +74,33 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     }
 
     override fun showSelectFacultyList(faculties: List<String>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        SelectDialog.newInstance(
+            "Выберите факультет",
+            faculties,
+            DialogInterface.OnClickListener { _, which ->
+                mSchedulePresenter.selectedFaculty(faculties[which])
+            }).show(fragmentManager, "faculty")
     }
 
     override fun showSelectCourseList(courses: List<String>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        SelectDialog.newInstance(
+            "Выберите курс",
+            courses,
+            DialogInterface.OnClickListener { _, which ->
+                mSchedulePresenter.selectedCourse(courses[which])
+            }).show(fragmentManager, "course")
     }
 
     override fun showSelectGroupList(groups: List<String>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        SelectDialog.newInstance(
+            "Выберите группу",
+            groups,
+            DialogInterface.OnClickListener { _, which ->
+                mSchedulePresenter.selectedGroup(groups[which])
+            }).show(fragmentManager, "group")
+    }
+
+    override fun showError(reason: String) {
+        Toast.makeText(context, reason, Toast.LENGTH_LONG).show()
     }
 }
