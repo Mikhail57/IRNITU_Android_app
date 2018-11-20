@@ -21,12 +21,10 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
     @Inject
     lateinit var preferences: PreferencesProvider
 
-    @Inject
-    @Named("network")
+    @field:[Inject Named("network")]
     lateinit var scheduleNetworkRepository: ScheduleRepository
 
-    @Inject
-    @Named("db")
+    @field:[Inject Named("db")]
     lateinit var scheduleDbRepository: ScheduleRepository
 
     private val disposable = CompositeDisposable()
@@ -82,7 +80,10 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
     fun selectedGroup(group: String) {
         viewState.showLoading("Скачивание расписания для группы $group...")
         disposable.add(scheduleNetworkRepository.getGroupSchedule(group).subscribe({
-
+            scheduleDbRepository.insertSchedule(it)
+            viewState.hideLoading()
+            preferences.set("selectedGroup", group)
+            viewState.showSchedule(group)
         }, {}))
     }
 

@@ -51,8 +51,6 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
 
         scheduleNoGroup.buttonOnClickListener = View.OnClickListener {
             mSchedulePresenter.loadGroupsFromNetwork()
-            val dialog = LoadingDialog.newInstance("Lol", "Kek")
-            dialog.show(fragmentManager, "LOL")
         }
     }
 

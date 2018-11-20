@@ -17,6 +17,7 @@ import istu.edu.irnitu.ui.adapters.ScheduleAdapter
 import kotlinx.android.synthetic.main.fragment_schedule_day.*
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Named
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,7 +38,7 @@ class ScheduleDayVPFragment : Fragment() {
 
     private val disposable = CompositeDisposable()
 
-    @Inject
+    @field:[Inject Named("db")]
     lateinit var scheduleRepository: ScheduleRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,6 +1,8 @@
 package istu.edu.irnitu.model.repository
 
 import android.arch.persistence.room.*
+import android.util.Log
+import io.reactivex.Completable
 import io.reactivex.Single
 import istu.edu.irnitu.entity.Class
 import istu.edu.irnitu.entity.Faculty
@@ -12,6 +14,9 @@ class ScheduleDbRepository(
 ) : ScheduleRepository {
     override fun getGroupSchedule(group: String): Single<List<Class>> {
         return scheduleDao.getScheduleForGroup(group)
+            .doOnSuccess {
+                Log.w("ScheduleDbRepository", "getGroupSchedule: $it")
+            }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }
@@ -41,8 +46,14 @@ class ScheduleDbRepository(
             .observeOn(schedulers.ui())
     }
 
-    override fun insertSchedule(classes: List<Class>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun insertSchedule(classes: List<Class>): Completable {
+        return Single.fromCallable {
+            Log.w("ScheduleDbRepository", "Classes: $classes")
+            scheduleDao.insertAll(classes)
+        }
+            .toCompletable()
+            .subscribeOn(schedulers.io())
+            .observeOn(schedulers.ui())
     }
 
 
@@ -62,6 +73,9 @@ interface ScheduleDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg classes: Class)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(classes: List<Class>)
 
     @Delete
     fun delete(klass: Class)

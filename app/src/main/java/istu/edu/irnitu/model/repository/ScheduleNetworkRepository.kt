@@ -1,6 +1,7 @@
 package istu.edu.irnitu.model.repository
 
 import android.util.Log
+import io.reactivex.Completable
 import io.reactivex.Single
 import istu.edu.irnitu.entity.Class
 import istu.edu.irnitu.entity.Faculty
@@ -11,9 +12,6 @@ class ScheduleNetworkRepository(
     private val api: IrnituApi,
     private val schedulers: SchedulersProvider
 ) : ScheduleRepository {
-    override fun insertSchedule(classes: List<Class>) {
-        Log.d("ScheduleNetworkRepo", "Stub method called")
-    }
 
     override fun getGroupSchedule(group: String): Single<List<Class>> = api.getGroupSchedule(group)
         .map {
@@ -32,4 +30,7 @@ class ScheduleNetworkRepository(
     override fun getGroups(): Single<List<Faculty>> = api.getGroups()
         .subscribeOn(schedulers.io())
         .observeOn(schedulers.ui())
+
+    override fun insertSchedule(classes: List<Class>): Completable =
+        Completable.error(NotImplementedError())
 }
