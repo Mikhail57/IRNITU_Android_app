@@ -25,7 +25,7 @@ class EventsPresenter : MvpPresenter<EventsView>() {
         super.onFirstViewAttach()
 
         disposable.add(eventsRepository
-            .getEvents(20)
+            .getEvents(50)
             .doOnSubscribe { viewState.showLoading(true) }
             .doAfterTerminate { viewState.showLoading(false) }
             .subscribe({
