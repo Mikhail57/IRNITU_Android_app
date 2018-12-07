@@ -1,5 +1,6 @@
 package istu.edu.irnitu.presentation.presenter
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.disposables.CompositeDisposable
@@ -80,10 +81,12 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
     fun selectedGroup(group: String) {
         viewState.showLoading("Скачивание расписания для группы $group...")
         disposable.add(scheduleNetworkRepository.getGroupSchedule(group).subscribe({
-            scheduleDbRepository.insertSchedule(it)
-            viewState.hideLoading()
-            preferences.set("selectedGroup", group)
-            viewState.showSchedule(group)
+            Log.d(TAG, "Loaded schedule for group $group is $it")
+            disposable.add(scheduleDbRepository.insertSchedule(it).subscribe {
+                viewState.hideLoading()
+                preferences.set("selectedGroup", group)
+                viewState.showSchedule(group)
+            })
         }, {}))
     }
 

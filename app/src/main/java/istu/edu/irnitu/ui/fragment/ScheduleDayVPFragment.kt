@@ -57,9 +57,6 @@ class ScheduleDayVPFragment : Fragment() {
         Application.appComponent.inject(this)
 
         disposable.add(scheduleRepository.getGroupScheduleForDay(group!!, day!!).subscribe({
-            if (this@ScheduleDayVPFragment == null) {
-                return@subscribe
-            }
             scheduleRecyclerView.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = ScheduleAdapter(it, dayString ?: "Unknown day...")
