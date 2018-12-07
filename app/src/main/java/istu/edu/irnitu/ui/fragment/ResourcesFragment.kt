@@ -14,6 +14,8 @@ import istu.edu.irnitu.presentation.presenter.ResourcesPresenter
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Resource
 import istu.edu.irnitu.ui.adapters.ResourcesAdapter
+import istu.edu.irnitu.utils.OnItemClickListener
+import istu.edu.irnitu.utils.browseUrl
 import kotlinx.android.synthetic.main.fragment_resources.*
 
 class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
@@ -36,7 +38,13 @@ class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewAdapter = ResourcesAdapter(resources)
+        viewAdapter = ResourcesAdapter(resources).apply {
+            setOnItemClickListener(object : OnItemClickListener<Int, Resource> {
+                override fun onClick(view: View?, position: Int, item: Resource) {
+                    browseUrl(context!!, item.url) // TODO: use application context
+                }
+            })
+        }
         viewManager = LinearLayoutManager(view.context)
 
         resourcesRecyclerView.apply {
@@ -62,8 +70,8 @@ class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
         const val TAG = "ResourcesFragment"
 
         fun newInstance(): ResourcesFragment {
-            val fragment: ResourcesFragment = ResourcesFragment()
-            val args: Bundle = Bundle()
+            val fragment = ResourcesFragment()
+            val args = Bundle()
             fragment.arguments = args
             return fragment
         }

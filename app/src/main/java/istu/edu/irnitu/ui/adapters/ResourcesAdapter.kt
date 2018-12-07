@@ -8,8 +8,12 @@ import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
 import istu.edu.irnitu.R
 import istu.edu.irnitu.entity.Resource
+import istu.edu.irnitu.utils.OnItemClickListener
 
-class ResourcesAdapter(var resources: List<Resource>) : RecyclerView.Adapter<ResourcesAdapter.ResourcesViewHolder>() {
+class ResourcesAdapter(var resources: List<Resource>) :
+    RecyclerView.Adapter<ResourcesAdapter.ResourcesViewHolder>() {
+
+    private var onItemClickListener: OnItemClickListener<Int, Resource>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResourcesViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,10 +29,30 @@ class ResourcesAdapter(var resources: List<Resource>) : RecyclerView.Adapter<Res
             image.setImageURI(resource.image)
             title.text = resource.title
         }
+        holder.onClickListener = View.OnClickListener {
+            onItemClickListener?.onClick(it, position, resource)
+        }
     }
 
-    class ResourcesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    fun setOnItemClickListener(listener: OnItemClickListener<Int, Resource>) {
+        onItemClickListener = listener
+    }
+
+    fun hasOnClickListener(): Boolean = onItemClickListener == null
+
+    class ResourcesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         val image: SimpleDraweeView = itemView.findViewById(R.id.resourceImage)
         val title: TextView = itemView.findViewById(R.id.resourceTitle)
+
+        var onClickListener: View.OnClickListener? = null
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(view: View?) {
+            onClickListener?.onClick(view)
+        }
     }
 }
