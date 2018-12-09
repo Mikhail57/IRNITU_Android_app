@@ -15,7 +15,7 @@ class ScheduleDbRepository(
     override fun getGroupSchedule(group: String): Single<List<Class>> {
         return scheduleDao.getScheduleForGroup(group)
             .doOnSuccess {
-                Log.w("ScheduleDbRepository", "getGroupSchedule: $it")
+                Log.d("ScheduleDbRepository", "getGroupSchedule: $it")
             }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
@@ -48,7 +48,6 @@ class ScheduleDbRepository(
 
     override fun insertSchedule(classes: List<Class>): Completable {
         return Single.fromCallable {
-            Log.w("ScheduleDbRepository", "Classes: $classes")
             scheduleDao.insertAll(classes)
         }
             .toCompletable()

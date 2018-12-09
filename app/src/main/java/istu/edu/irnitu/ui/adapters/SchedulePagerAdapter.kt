@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.text.format.DateFormat
-import istu.edu.irnitu.ui.fragment.ScheduleDayVPFragment
+import istu.edu.irnitu.ui.fragment.ScheduleDayViewPagerFragment
 import java.util.*
 
 class SchedulePagerAdapter(
@@ -18,7 +18,7 @@ class SchedulePagerAdapter(
         val calendar = getCalendarForPosition(position)
         val day = getDayForCalendar(calendar)
         val readableDate = getReadableDateStringForCalendar(calendar)
-        return ScheduleDayVPFragment.newInstance(group, day, readableDate)
+        return ScheduleDayViewPagerFragment.newInstance(day, readableDate, group)
     }
 
     override fun getCount(): Int = 365 / 2

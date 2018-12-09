@@ -5,17 +5,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.arellomobile.mvp.MvpAppCompatFragment
 import istu.edu.irnitu.R
 import istu.edu.irnitu.presentation.view.ScheduleDayViewPagerView
 import istu.edu.irnitu.presentation.presenter.ScheduleDayViewPagerPresenter
 
-import com.arellomobile.mvp.MvpFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Class
 import istu.edu.irnitu.ui.adapters.ScheduleAdapter
-import kotlinx.android.synthetic.main.fragment_schedule_day.*
+import kotlinx.android.synthetic.main.fragment_schedule_day_view_pager.*
 
-class ScheduleDayViewPagerFragment : MvpFragment(), ScheduleDayViewPagerView {
+class ScheduleDayViewPagerFragment : MvpAppCompatFragment(), ScheduleDayViewPagerView {
     companion object {
         const val TAG = "ScheduleDayViewPagerFragment"
 
@@ -23,7 +23,7 @@ class ScheduleDayViewPagerFragment : MvpFragment(), ScheduleDayViewPagerView {
         private const val ARG_DAY_STRING_PARAM = "day-str"
         private const val ARG_GROUP_PARAM = "group"
 
-        fun newInstance(day: Int, dayString: String, group: String): ScheduleDayViewPagerFragment =
+        fun newInstance(day: Int, dayString: String, group: String) =
             ScheduleDayViewPagerFragment()
                 .apply {
                     arguments = Bundle().apply {

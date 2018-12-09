@@ -124,7 +124,7 @@ class ScheduleAdapter(
         }
 
         fun getReadableClassType(classType: String): ClassType {
-            Log.w("BaseScheduleViewHolder", "classType=$classType")
+            Log.d("BaseScheduleViewHolder", "classType=$classType")
             return ClassType.values().find { it.title == classType.trim() }!!
         }
     }
