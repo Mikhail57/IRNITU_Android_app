@@ -17,7 +17,6 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import istu.edu.irnitu.ui.adapters.SchedulePagerAdapter
 import istu.edu.irnitu.ui.dialog.LoadingDialog
-import istu.edu.irnitu.ui.dialog.SelectDialog
 
 class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     companion object {
