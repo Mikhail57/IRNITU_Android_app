@@ -37,7 +37,7 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     private lateinit var pagerAdapter: FragmentPagerAdapter
 
     private var loadingDialog: LoadingDialog? = null
-    private var dialog: AlertDialog? = null
+    private var dialogs: MutableMap<String, AlertDialog> = HashMap()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -103,8 +103,9 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
         Toast.makeText(context, reason, Toast.LENGTH_LONG).show()
     }
 
-    override fun hideDialog() {
-        dialog?.dismiss()
+    override fun hideDialog(title: String) {
+        dialogs[title]?.dismiss()
+        dialogs.remove(title)
     }
 
     private fun makeDialog(
@@ -115,14 +116,14 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
         AlertDialog.Builder(context!!).apply {
             setTitle(title)
             setItems(items.toTypedArray()) { dialog, which ->
-                onItemClickListener.onClick(dialog, which)
                 dialog.dismiss()
+                onItemClickListener.onClick(dialog, which)
             }
             setOnDismissListener {
-                mSchedulePresenter.onDismissDialog()
+                mSchedulePresenter.onDismissDialog(title)
             }
         }.create().also {
-            dialog?.dismiss()
-            dialog = it
+//            dialog?.dismiss()
+            dialogs[title] = it
         }
 }

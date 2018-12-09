@@ -12,5 +12,5 @@ interface ScheduleView : MvpView {
     fun showSelectFacultyList(faculties: List<String>)
     fun showSelectCourseList(courses: List<String>)
     fun showSelectGroupList(groups: List<String>)
-    fun hideDialog()
+    fun hideDialog(title: String)
 }

@@ -43,8 +43,6 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
         viewState.showSchedule(group)
     }
 
-    private fun getDay(calendarDay: Int) = if (calendarDay > 1) calendarDay - 1 else 7
-
     override fun onDestroy() {
         disposable.dispose()
     }
@@ -90,8 +88,8 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
         }, {}))
     }
 
-    fun onDismissDialog() {
-        viewState.hideDialog()
+    fun onDismissDialog(title: String) {
+        viewState.hideDialog(title)
     }
 
 }
