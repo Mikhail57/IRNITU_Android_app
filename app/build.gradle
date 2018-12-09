@@ -29,7 +29,7 @@ android {
 android.defaultConfig.vectorDrawables.useSupportLibrary = true
 
 def supportVersion = '28.0.0'
-def moxyVersion = '1.5.3'
+def moxyVersion = '1.5.5'
 def retrofitVersion = '2.4.0'
 def rxjavaVersion = '2.1.1'
 def rxandroidVersion = '2.0.2'
