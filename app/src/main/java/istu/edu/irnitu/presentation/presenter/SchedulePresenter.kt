@@ -90,4 +90,8 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
         }, {}))
     }
 
+    fun onDismissDialog() {
+        viewState.hideDialog()
+    }
+
 }

@@ -32,4 +32,5 @@ interface AppComponent {
     fun inject(schedulePresenter: SchedulePresenter)
     fun inject(scheduleDayVPFragment: ScheduleDayVPFragment)
     fun inject(settingsPresenter: SettingsPresenter)
+    fun inject(scheduleDayViewPagerPresenter: ScheduleDayViewPagerPresenter)
 }

@@ -3,6 +3,7 @@ package istu.edu.irnitu.ui.fragment
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     private lateinit var pagerAdapter: FragmentPagerAdapter
 
     private var loadingDialog: LoadingDialog? = null
+    private var dialog: AlertDialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,33 +74,56 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     }
 
     override fun showSelectFacultyList(faculties: List<String>) {
-        SelectDialog.newInstance(
+        makeDialog(
             "Выберите факультет",
             faculties,
             DialogInterface.OnClickListener { _, which ->
                 mSchedulePresenter.selectedFaculty(faculties[which])
-            }).show(fragmentManager, "faculty")
+            }).show()
     }
 
     override fun showSelectCourseList(courses: List<String>) {
-        SelectDialog.newInstance(
+        makeDialog(
             "Выберите курс",
             courses,
             DialogInterface.OnClickListener { _, which ->
                 mSchedulePresenter.selectedCourse(courses[which])
-            }).show(fragmentManager, "course")
+            }).show()
     }
 
     override fun showSelectGroupList(groups: List<String>) {
-        SelectDialog.newInstance(
+        makeDialog(
             "Выберите группу",
             groups,
             DialogInterface.OnClickListener { _, which ->
                 mSchedulePresenter.selectedGroup(groups[which])
-            }).show(fragmentManager, "group")
+            }).show()
     }
 
     override fun showError(reason: String) {
         Toast.makeText(context, reason, Toast.LENGTH_LONG).show()
     }
+
+    override fun hideDialog() {
+        dialog?.dismiss()
+    }
+
+    private fun makeDialog(
+        title: String,
+        items: List<String>,
+        onItemClickListener: DialogInterface.OnClickListener
+    ) =
+        AlertDialog.Builder(context!!).apply {
+            setTitle(title)
+            setItems(items.toTypedArray()) { dialog, which ->
+                onItemClickListener.onClick(dialog, which)
+                dialog.dismiss()
+            }
+            setOnDismissListener {
+                mSchedulePresenter.onDismissDialog()
+            }
+        }.create().also {
+            dialog?.dismiss()
+            dialog = it
+        }
 }
