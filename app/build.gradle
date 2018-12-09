@@ -75,6 +75,9 @@ dependencies {
     // Navigation
     implementation "ru.terrakok.cicerone:cicerone:$ciceroneVersion"
 
+    // Bottom navigation
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
+
     // Paging
     implementation "android.arch.paging:runtime:$pagingVersion"
     implementation "android.arch.paging:rxjava2:$pagingVersion"

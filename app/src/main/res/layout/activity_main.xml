@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <istu.edu.irnitu.utils.NonSwipeableViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity" />
 
-    <android.support.design.widget.BottomNavigationView
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
