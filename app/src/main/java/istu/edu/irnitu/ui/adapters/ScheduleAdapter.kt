@@ -28,13 +28,17 @@ class ScheduleAdapter(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_class_double, parent, false)
             )
+            ScheduleItemTypes.END -> BaseScheduleViewHolder.DayEndViewHolder(
+                LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_day_list_end, parent, false)
+            )
         }
     }
 
-    override fun getItemCount(): Int = schedule.size + 1
+    override fun getItemCount(): Int = schedule.size + 2
 
     override fun onBindViewHolder(vh: BaseScheduleViewHolder, position: Int) {
-        val klass = if (position > 0) schedule[position - 1] else null
+        val klass = if (position in 1..(itemCount - 2)) schedule[position - 1] else null
         when (vh) {
             is BaseScheduleViewHolder.DayTitleViewHolder -> vh.bind(day)
             is BaseScheduleViewHolder.ClassItemViewHolder -> vh.bind(klass!!)
@@ -45,6 +49,8 @@ class ScheduleAdapter(
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {
             ScheduleItemTypes.TITLE.ordinal
+        } else if (position == itemCount - 1) {
+            ScheduleItemTypes.END.ordinal
         } else {
             if (schedule[position - 1].room.contains('@')) {
                 ScheduleItemTypes.DOUBLE.ordinal
@@ -63,6 +69,8 @@ class ScheduleAdapter(
                 this.day.text = day
             }
         }
+
+        class DayEndViewHolder(view: View) : BaseScheduleViewHolder(view)
 
         class ClassItemViewHolder(view: View) : BaseScheduleViewHolder(view) {
             private val title: TextView = view.findViewById(R.id.classTitle)
@@ -132,7 +140,8 @@ class ScheduleAdapter(
     enum class ScheduleItemTypes {
         TITLE,
         SINGLE,
-        DOUBLE
+        DOUBLE,
+        END
     }
 
     enum class ClassType(val title: String, val readableTitle: String) {
