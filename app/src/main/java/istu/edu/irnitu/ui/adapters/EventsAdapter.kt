@@ -2,7 +2,6 @@ package istu.edu.irnitu.ui.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,11 @@ import com.facebook.drawee.view.SimpleDraweeView
 import istu.edu.irnitu.Application
 import istu.edu.irnitu.R
 import istu.edu.irnitu.entity.Event
+import java.text.SimpleDateFormat
 import javax.inject.Inject
 
-class EventsAdapter(var events: List<Event>) : RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
+class EventsAdapter(var events: List<Event>) :
+    RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
 
     @Inject
     lateinit var context: Context
@@ -31,9 +32,11 @@ class EventsAdapter(var events: List<Event>) : RecyclerView.Adapter<EventsAdapte
 
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
         val event = events[position]
+        val dateFormat = SimpleDateFormat("dd MMMM • EEEE • H:mm")
         holder.apply {
             title.text = event.name
-            date.text = DateUtils.formatDateTime(context, event.startsAt.time, DateUtils.FORMAT_ABBREV_RELATIVE)
+
+            date.text = dateFormat.format(event.startsAt)
             place.text = event.location.address
             image.setImageURI(event.image.defaultUrl)
         }

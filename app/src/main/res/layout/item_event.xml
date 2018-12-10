@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="128dp"
+    android:layout_height="136dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp">
 
@@ -71,4 +71,4 @@
             app:layout_constraintTop_toBottomOf="@+id/eventDate"
             tools:text="ул. Лермонтова, 80" />
     </android.support.constraint.ConstraintLayout>
-</android.support.design.card.MaterialCardView>
+</FrameLayout>
