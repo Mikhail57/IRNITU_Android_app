@@ -3,6 +3,7 @@ package istu.edu.irnitu.presentation.presenter
 import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import istu.edu.irnitu.Application
 import istu.edu.irnitu.entity.Faculty
@@ -78,14 +79,18 @@ class SchedulePresenter : MvpPresenter<ScheduleView>() {
 
     fun selectedGroup(group: String) {
         viewState.showLoading("Скачивание расписания для группы $group...")
-        disposable.add(scheduleNetworkRepository.getGroupSchedule(group).subscribe({
-            Log.d(TAG, "Loaded schedule for group $group is $it")
-            disposable.add(scheduleDbRepository.insertSchedule(it).subscribe {
-                viewState.hideLoading()
-                preferences.set("selectedGroup", group)
-                viewState.showSchedule(group)
+        disposable.add(scheduleNetworkRepository.getGroupSchedule(group).flatMap {
+            scheduleDbRepository.insertSchedule(it).andThen(Single.just(it))
+        }.subscribe({
+            Log.w(TAG, "List: $it")
+            viewState.hideLoading()
+            preferences.set("selectedGroup", group)
+            viewState.showSchedule(group)
+        },
+            {
+                viewState.showError("Ошибка сохранения...")
             })
-        }, {}))
+        )
     }
 
     fun onDismissDialog(title: String) {

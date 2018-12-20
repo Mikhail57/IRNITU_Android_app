@@ -15,7 +15,7 @@ class ScheduleDbRepository(
     override fun getGroupSchedule(group: String): Single<List<Class>> {
         return scheduleDao.getScheduleForGroup(group)
             .doOnSuccess {
-                Log.d("ScheduleDbRepository", "getGroupSchedule: $it")
+                Log.w("ScheduleDbRepository", "getGroupSchedule: $it")
             }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
@@ -24,7 +24,8 @@ class ScheduleDbRepository(
     override fun getGroupScheduleForDay(group: String, day: Int): Single<List<Class>> {
         return scheduleDao.getScheduleForGroup(group).map {
             it.filter { klass ->
-                day == klass.day || (day > 6 && (day - 6 == klass.day) && klass.everyWeek == 2)
+                Log.w("ScheduleDbRepository", "day: $day, class.day=${klass.day}")
+                day == klass.day || (day > 7 && (day - 7 == klass.day) && klass.everyWeek == 2)
             }
         }
             .subscribeOn(schedulers.io())

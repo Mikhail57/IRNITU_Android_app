@@ -2,8 +2,9 @@ package istu.edu.irnitu.entity
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 
-@Entity(tableName = "schedule", primaryKeys = ["group_title", "day", "everyWeek"])
+@Entity(tableName = "schedule")
 data class Class(
     val title: String,
     val room: String,
@@ -19,10 +20,13 @@ data class Class(
     val dayEnd: String,
     val type: String,
     /*
-      day 1-6, everyWeek 1 - только по нечетным
-      day 1-6, everyWeek 2 - каждую неделю
-      day 8-12, everyWeek 1 - только по четным
+      day 1-7, everyWeek 1 - только по нечетным
+      day 1-7, everyWeek 2 - каждую неделю
+      day 8-14, everyWeek 1 - только по четным
     */
     val day: Int,
-    val everyWeek: Int
+    val everyWeek: Int,
+
+    @PrimaryKey(autoGenerate = true)
+    val index: Int = 0
 )
