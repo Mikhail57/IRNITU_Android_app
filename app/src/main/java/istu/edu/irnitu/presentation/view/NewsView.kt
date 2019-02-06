@@ -1,6 +1,6 @@
 package istu.edu.irnitu.presentation.view
 
-import android.arch.paging.PagedList
+import androidx.paging.PagedList
 import com.arellomobile.mvp.MvpView
 import io.reactivex.Observable
 import istu.edu.irnitu.entity.News

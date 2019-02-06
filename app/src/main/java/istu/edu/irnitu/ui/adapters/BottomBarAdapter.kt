@@ -1,7 +1,7 @@
 package istu.edu.irnitu.ui.adapters
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import istu.edu.irnitu.ui.fragment.*
 import istu.edu.irnitu.utils.SmartFragmentStatePagerAdapter
 
@@ -22,7 +22,7 @@ class BottomBarAdapter(fragmentManager: FragmentManager) :
         )
     }
 
-    override fun getItem(position: Int): Fragment = fragments[position]
+    override fun getItem(position: Int): androidx.fragment.app.Fragment = fragments[position]
 
     override fun getCount(): Int = fragments.size
 }

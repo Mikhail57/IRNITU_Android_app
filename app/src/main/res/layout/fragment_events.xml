@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.EventsFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eventsContentScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/eventsToolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:title="События" />
 
-        <android.support.design.chip.ChipGroup
+        <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -35,33 +35,33 @@
             app:layout_constraintTop_toBottomOf="@+id/eventsToolbar"
             app:singleSelection="true">
 
-            <android.support.design.chip.Chip
+            <com.google.android.material.chip.Chip
                 android:id="@+id/todayChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="Сегодня" />
 
-            <android.support.design.chip.Chip
+            <com.google.android.material.chip.Chip
                 android:id="@+id/tomorrowChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Завтра" />
 
-            <android.support.design.chip.Chip
+            <com.google.android.material.chip.Chip
                 android:id="@+id/weekChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Неделя" />
 
-            <android.support.design.chip.Chip
+            <com.google.android.material.chip.Chip
                 android:id="@+id/monthChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Месяц" />
-        </android.support.design.chip.ChipGroup>
+        </com.google.android.material.chip.ChipGroup>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/eventsRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -71,7 +71,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipGroup"
             tools:listitem="@layout/item_event" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@+id/eventsLoadingScreen"

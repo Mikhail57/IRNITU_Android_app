@@ -1,6 +1,6 @@
 package istu.edu.irnitu.utils
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 import istu.edu.irnitu.entity.News
 
 val NEWS_DIFF_CALLBACK = object : DiffUtil.ItemCallback<News>() {

@@ -2,8 +2,8 @@ package istu.edu.irnitu.ui.fragment
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.app.AlertDialog
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,7 +34,7 @@ class ScheduleFragment : MvpAppCompatFragment(), ScheduleView {
     @InjectPresenter
     lateinit var mSchedulePresenter: SchedulePresenter
 
-    private lateinit var pagerAdapter: FragmentPagerAdapter
+    private lateinit var pagerAdapter: androidx.fragment.app.FragmentPagerAdapter
 
     private var loadingDialog: LoadingDialog? = null
     private var dialogs: MutableMap<String, AlertDialog> = HashMap()

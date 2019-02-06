@@ -1,7 +1,7 @@
 package istu.edu.irnitu.model.datasource
 
 import android.annotation.SuppressLint
-import android.arch.paging.PageKeyedDataSource
+import androidx.paging.PageKeyedDataSource
 import istu.edu.irnitu.entity.News
 import istu.edu.irnitu.model.repository.NewsPagedRepository
 

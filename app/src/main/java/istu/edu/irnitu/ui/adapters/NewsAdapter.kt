@@ -1,8 +1,8 @@
 package istu.edu.irnitu.ui.adapters
 
-import android.arch.paging.PagedListAdapter
-import android.support.design.chip.Chip
-import android.support.v7.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import com.google.android.material.chip.Chip
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ import istu.edu.irnitu.R
 import istu.edu.irnitu.entity.News
 import istu.edu.irnitu.utils.NEWS_DIFF_CALLBACK
 
-class NewsAdapter() : PagedListAdapter<News, NewsAdapter.NewsViewHolder>(NEWS_DIFF_CALLBACK) {
+class NewsAdapter : PagedListAdapter<News, NewsAdapter.NewsViewHolder>(NEWS_DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         return NewsViewHolder(layout)

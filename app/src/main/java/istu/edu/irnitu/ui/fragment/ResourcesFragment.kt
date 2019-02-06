@@ -1,8 +1,8 @@
 package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +24,7 @@ class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
     lateinit var mResourcesPresenter: ResourcesPresenter
 
     private lateinit var viewAdapter: ResourcesAdapter
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var viewManager: androidx.recyclerview.widget.RecyclerView.LayoutManager
 
     private var resources: List<Resource> = arrayListOf()
 
@@ -45,7 +45,7 @@ class ResourcesFragment : MvpAppCompatFragment(), ResourcesView {
                 }
             })
         }
-        viewManager = LinearLayoutManager(view.context)
+        viewManager = androidx.recyclerview.widget.LinearLayoutManager(view.context)
 
         resourcesRecyclerView.apply {
             setHasFixedSize(true)

@@ -1,10 +1,9 @@
 package istu.edu.irnitu.utils
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.view.ViewGroup
 import android.util.SparseArray
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 
 
 /**
@@ -17,11 +16,11 @@ import android.support.v4.app.FragmentStatePagerAdapter
 abstract class SmartFragmentStatePagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
     // Sparse array to keep track of registered fragments in memory
-    private val registeredFragments = SparseArray<Fragment>()
+    private val registeredFragments = SparseArray<androidx.fragment.app.Fragment>()
 
     // Register the fragment when the item is instantiated
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val fragment = super.instantiateItem(container, position) as Fragment
+        val fragment = super.instantiateItem(container, position) as androidx.fragment.app.Fragment
         registeredFragments.put(position, fragment)
         return fragment
     }
@@ -33,7 +32,7 @@ abstract class SmartFragmentStatePagerAdapter(fragmentManager: FragmentManager) 
     }
 
     // Returns the fragment for the position (if instantiated)
-    fun getRegisteredFragment(position: Int): Fragment {
+    fun getRegisteredFragment(position: Int): androidx.fragment.app.Fragment {
         return registeredFragments.get(position)
     }
 }

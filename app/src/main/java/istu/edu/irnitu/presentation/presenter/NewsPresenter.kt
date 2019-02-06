@@ -1,8 +1,8 @@
 package istu.edu.irnitu.presentation.presenter
 
-import android.arch.paging.DataSource
-import android.arch.paging.PagedList
-import android.arch.paging.RxPagedListBuilder
+import androidx.paging.DataSource
+import androidx.paging.PagedList
+import androidx.paging.RxPagedListBuilder
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import io.reactivex.Observable

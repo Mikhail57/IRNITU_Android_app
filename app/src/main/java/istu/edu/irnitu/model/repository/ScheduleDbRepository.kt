@@ -1,6 +1,6 @@
 package istu.edu.irnitu.model.repository
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import android.util.Log
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -51,7 +51,7 @@ class ScheduleDbRepository(
         return Single.fromCallable {
             scheduleDao.insertAll(classes)
         }
-            .toCompletable()
+            .ignoreElement()
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
     }

@@ -7,7 +7,7 @@
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -70,5 +70,5 @@
             app:layout_constraintStart_toEndOf="@+id/eventImage"
             app:layout_constraintTop_toBottomOf="@+id/eventDate"
             tools:text="ул. Лермонтова, 80" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

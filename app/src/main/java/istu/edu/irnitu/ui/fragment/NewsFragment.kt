@@ -1,9 +1,9 @@
 package istu.edu.irnitu.ui.fragment
 
-import android.arch.paging.PagedList
+import androidx.paging.PagedList
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +26,7 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
     lateinit var mNewsPresenter: NewsPresenter
 
     private lateinit var viewAdapter: NewsAdapter
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var viewManager: androidx.recyclerview.widget.RecyclerView.LayoutManager
 
     private val disposable = CompositeDisposable()
 
@@ -41,7 +41,7 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
         super.onViewCreated(view, savedInstanceState)
 
         viewAdapter = NewsAdapter()
-        viewManager = LinearLayoutManager(context)
+        viewManager = androidx.recyclerview.widget.LinearLayoutManager(context)
 
         newsRecyclerView.apply {
             setHasFixedSize(true)
@@ -64,8 +64,8 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
         const val TAG = "NewsFragment"
 
         fun newInstance(): NewsFragment {
-            val fragment: NewsFragment = NewsFragment()
-            val args: Bundle = Bundle()
+            val fragment = NewsFragment()
+            val args = Bundle()
             fragment.arguments = args
             return fragment
         }

@@ -1,8 +1,6 @@
 package istu.edu.irnitu.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +21,7 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
     lateinit var mEventsPresenter: EventsPresenter
 
     private lateinit var viewAdapter: EventsAdapter
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var viewManager: androidx.recyclerview.widget.RecyclerView.LayoutManager
 
     private var events: List<Event> = ArrayList()
 
@@ -38,7 +36,7 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
         super.onViewCreated(view, savedInstanceState)
 
         viewAdapter = EventsAdapter(events)
-        viewManager = LinearLayoutManager(context)
+        viewManager = androidx.recyclerview.widget.LinearLayoutManager(context)
 
         eventsRecyclerView.apply {
             setHasFixedSize(true)
@@ -72,8 +70,8 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
         const val TAG = "EventsFragment"
 
         fun newInstance(): EventsFragment {
-            val fragment: EventsFragment = EventsFragment()
-            val args: Bundle = Bundle()
+            val fragment = EventsFragment()
+            val args = Bundle()
             fragment.arguments = args
             return fragment
         }

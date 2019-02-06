@@ -1,8 +1,8 @@
 package istu.edu.irnitu.model.datasource
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.paging.DataSource
-import android.arch.paging.PageKeyedDataSource
+import androidx.lifecycle.MutableLiveData
+import androidx.paging.DataSource
+import androidx.paging.PageKeyedDataSource
 import istu.edu.irnitu.entity.News
 import istu.edu.irnitu.model.repository.NewsPagedRepository
 

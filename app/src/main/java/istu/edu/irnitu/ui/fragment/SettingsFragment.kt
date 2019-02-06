@@ -2,8 +2,8 @@ package istu.edu.irnitu.ui.fragment
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v7.app.AlertDialog
+import androidx.fragment.app.DialogFragment
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +57,7 @@ class SettingsFragment : MvpAppCompatFragment(), SettingsView, OnDialogClickList
         Toast.makeText(context, "Расписание удалено...", Toast.LENGTH_SHORT).show()
     }
 
-    class AreYouSureDialogFragment : DialogFragment() {
+    class AreYouSureDialogFragment : androidx.fragment.app.DialogFragment() {
         var onClickListener: OnDialogClickListener? = null
 
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
