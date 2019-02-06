@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.NewsPostActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">
@@ -27,7 +28,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ui.activity.SelectGroupActivity" />
     </application>
 
 </manifest>
