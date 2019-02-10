@@ -91,6 +91,9 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
 
+    // Image Slider
+    implementation 'com.github.Mikhail57:AndroidImageSlider:1.1.6'
+
     // Testing libraries
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

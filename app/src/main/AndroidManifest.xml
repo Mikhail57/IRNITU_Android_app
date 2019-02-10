@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.NewsPostActivity" />
+        <activity
+            android:name=".ui.activity.NewsPostActivity"
+            android:theme="@style/AppTheme.SimpleCoordinatorTheme" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">

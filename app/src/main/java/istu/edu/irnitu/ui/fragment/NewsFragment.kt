@@ -17,7 +17,9 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import istu.edu.irnitu.entity.News
+import istu.edu.irnitu.ui.activity.NewsPostActivity
 import istu.edu.irnitu.ui.adapters.NewsAdapter
+import istu.edu.irnitu.utils.OnItemClickListener
 import kotlinx.android.synthetic.main.fragment_news.*
 
 class NewsFragment : MvpAppCompatFragment(), NewsView {
@@ -42,6 +44,12 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
 
         viewAdapter = NewsAdapter()
         viewManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+
+        viewAdapter.setOnItemClickListener(object : OnItemClickListener<Int, News> {
+            override fun onClick(view: View?, position: Int, item: News) {
+                startActivity(NewsPostActivity.getIntent(context!!, item.id))
+            }
+        })
 
         newsRecyclerView.apply {
             setHasFixedSize(true)

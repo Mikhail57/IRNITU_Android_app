@@ -5,6 +5,8 @@ import com.arellomobile.mvp.MvpPresenter
 import istu.edu.irnitu.presentation.view.NewsPostView
 
 @InjectViewState
-class NewsPostPresenter(private val postId: Int) : MvpPresenter<NewsPostView>() {
+class NewsPostPresenter(private val postId: Long) : MvpPresenter<NewsPostView>() {
+    override fun onFirstViewAttach() {
 
+    }
 }

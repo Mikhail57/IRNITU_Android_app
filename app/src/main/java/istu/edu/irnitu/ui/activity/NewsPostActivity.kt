@@ -12,6 +12,7 @@ import istu.edu.irnitu.presentation.presenter.NewsPostPresenter
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import istu.edu.irnitu.entity.NewsPost
+import kotlinx.android.synthetic.main.activity_news_post.*
 
 
 class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
@@ -30,7 +31,7 @@ class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
     companion object {
         const val TAG = "NewsPostActivity"
         private const val ARG_POST_ID = "post_id"
-        fun getIntent(context: Context, postId: Int): Intent =
+        fun getIntent(context: Context, postId: Long): Intent =
             Intent(context, NewsPostActivity::class.java).apply {
                 putExtra(ARG_POST_ID, postId)
             }
@@ -40,13 +41,15 @@ class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
     lateinit var mNewsPostPresenter: NewsPostPresenter
 
     @ProvidePresenter
-    fun providePresenter() {
-
+    fun providePresenter(): NewsPostPresenter {
+        return NewsPostPresenter(intent.getLongExtra(ARG_POST_ID, 0))
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_post)
+
+        content.text = "Very Long Text\n".repeat(500)
     }
 }
