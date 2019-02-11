@@ -4,7 +4,7 @@ import com.arellomobile.mvp.MvpView
 import istu.edu.irnitu.entity.NewsPost
 
 interface NewsPostView : MvpView {
-    fun showLoadin(isLoading: Boolean)
+    fun showLoading(isLoading: Boolean)
 
     fun showError(error: String)
 
