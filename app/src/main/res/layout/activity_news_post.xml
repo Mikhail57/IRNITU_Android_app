@@ -24,7 +24,7 @@
             <!--app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"-->
 
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/app_bar_image"
+                android:id="@+id/appBarImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -61,7 +61,7 @@
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="256dp" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

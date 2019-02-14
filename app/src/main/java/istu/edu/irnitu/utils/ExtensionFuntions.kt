@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import com.daimajia.slider.library.SliderLayout
+import com.daimajia.slider.library.SliderTypes.BaseSliderView
 
 fun SharedPreferences.getStringOrNull(key: String): String? = this.getString(key, null)
 
@@ -12,4 +14,8 @@ fun browseUrl(context: Context, url: String) {
     context.startActivity(browserIntent)
 }
 
-
+fun SliderLayout.addSlidersFromList(list: List<BaseSliderView>) {
+    list.forEach {
+        this.addSlider(it)
+    }
+}
