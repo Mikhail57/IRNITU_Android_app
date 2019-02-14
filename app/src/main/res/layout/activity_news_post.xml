@@ -17,9 +17,10 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            android:id="@+id/collapsingToolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
-            app:title="Студентка ИРНИТУ Анастасия Белова рассказала участникам семинара в Перми о проекте по предупреждению обвалов на рудниках"
+            app:title="Loooool"
             app:toolbarId="@+id/toolbar">
             <!--app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"-->
 
@@ -56,7 +57,13 @@
                 android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:lineSpacingExtra="4sp"
+                android:padding="16dp"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textSize="14sp"
+                app:fontFamily="@font/roboto_slab"
+                tools:text="@tools:sample/lorem/random" />
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"

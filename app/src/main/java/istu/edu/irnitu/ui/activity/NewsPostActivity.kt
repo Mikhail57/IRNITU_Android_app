@@ -2,7 +2,11 @@ package istu.edu.irnitu.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
+import android.view.View.GONE
 import android.widget.Toast
 
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -29,17 +33,27 @@ class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
     }
 
     override fun showNewsPost(post: NewsPost) {
-        content.text = post.content
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            content.text = Html.fromHtml(post.content.replace("\n", "<br>"), Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            @Suppress("DEPRECATION")
+            content.text = Html.fromHtml(post.content)
+        }
+        content.movementMethod = LinkMovementMethod.getInstance()
+//        content.loadDataWithBaseURL(post.url, post.content, "text/html", "utf-8", null)
         appBarImage.setImageURI(post.mainImageUrl)
-        toolbar.title = post.title
+        collapsingToolbar.title = post.title
 
         val slides = post.images.map {
             DefaultSliderView(this).apply {
-                image(it.mini)
-                scaleType = BaseSliderView.ScaleType.CenterInside
+                image(it.full)
+                scaleType = BaseSliderView.ScaleType.Fit
             }
         }
-        slider.addSlidersFromList(slides)
+        if (slides.isEmpty())
+            slider.visibility = GONE
+        else
+            slider.addSlidersFromList(slides)
     }
 
     companion object {
@@ -64,6 +78,6 @@ class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_post)
 
-        content.text = "Very Long Text\n".repeat(500)
+//        content.text = "Very Long Text\n".repeat(500)
     }
 }
