@@ -25,7 +25,7 @@ class RetrofitModule {
     @Named("istu")
     @Singleton
     fun provideIstuRetrofit(builder: Retrofit.Builder): Retrofit =
-        builder.baseUrl("http://194.67.194.249:8081/").build()
+        builder.baseUrl("https://irnituapi.ru/").build()
 
     @Provides
     @Singleton
