@@ -1,6 +1,5 @@
 package istu.edu.irnitu.model.repository
 
-import android.util.Log
 import io.reactivex.Completable
 import io.reactivex.Single
 import istu.edu.irnitu.entity.Class
