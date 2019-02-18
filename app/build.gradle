@@ -94,6 +94,8 @@ dependencies {
     // Image Slider
     implementation 'com.github.Mikhail57:AndroidImageSlider:1.1.6'
 
+    implementation 'net.opacapp:multiline-collapsingtoolbar:27.1.1'
+
     // Testing libraries
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
