@@ -17,10 +17,10 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             android:id="@+id/collapsingToolbar"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
-            app:title="Loooool"
+            app:title="Загрузка..."
             app:toolbarId="@+id/toolbar">
             <!--app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"-->
 
