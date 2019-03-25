@@ -10,4 +10,5 @@
     <color name="colorDayTitleBg">#1684af</color>
     <color name="colorDayItemBg">#eaeaea</color>
     <color name="colorClassDivider">#acacac</color>
+    <color name="colorNewsPostTitleBackground">#96292929</color>
 </resources>

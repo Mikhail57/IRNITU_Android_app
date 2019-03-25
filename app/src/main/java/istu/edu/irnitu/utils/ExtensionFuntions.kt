@@ -14,7 +14,7 @@ fun browseUrl(context: Context, url: String) {
     context.startActivity(browserIntent)
 }
 
-fun SliderLayout.addSlidersFromList(list: List<BaseSliderView>) {
+fun SliderLayout.addSliders(list: Iterable<BaseSliderView>) {
     list.forEach {
         this.addSlider(it)
     }
