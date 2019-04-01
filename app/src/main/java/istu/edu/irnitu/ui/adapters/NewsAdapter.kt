@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.facebook.drawee.view.SimpleDraweeView
+import com.google.android.material.chip.ChipGroup
 import istu.edu.irnitu.R
 import istu.edu.irnitu.entity.News
-import istu.edu.irnitu.entity.Resource
 import istu.edu.irnitu.utils.NEWS_DIFF_CALLBACK
 import istu.edu.irnitu.utils.OnItemClickListener
 
@@ -43,8 +43,7 @@ class NewsAdapter : PagedListAdapter<News, NewsAdapter.NewsViewHolder>(NEWS_DIFF
         val title: TextView = itemView.findViewById(R.id.newsTitle)
         val shortDescription: TextView = itemView.findViewById(R.id.newsShortText)
         val date: TextView = itemView.findViewById(R.id.newsDate)
-        val chip1: Chip = itemView.findViewById(R.id.newsChip1)
-        val chip2: Chip = itemView.findViewById(R.id.newsChip2)
+        val chipGroup: ChipGroup = itemView.findViewById(R.id.chipGroup)
 
         var onClickListener: View.OnClickListener? = null
 
@@ -57,11 +56,9 @@ class NewsAdapter : PagedListAdapter<News, NewsAdapter.NewsViewHolder>(NEWS_DIFF
             title.text = news.title
             shortDescription.text = news.shortDesc
             date.text = news.date
-            chip1.text = news.categories[0].title
-            if (news.categories.size > 1)
-                chip2.text = news.categories[1].title
-            else
-                chip2.visibility = View.GONE
+            news.categories.forEach {
+                chipGroup.addView(Chip(itemView.context).apply { text = it.title })
+            }
         }
 
         override fun onClick(view: View?) {

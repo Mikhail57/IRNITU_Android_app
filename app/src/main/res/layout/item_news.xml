@@ -92,23 +92,7 @@
         app:layout_constraintEnd_toStartOf="@+id/newsDate"
         app:layout_constraintStart_toEndOf="@+id/newsImage">
 
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:singleLine="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/newsChip1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Образование" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/newsChip2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Студентам" />
-        </com.google.android.material.chip.ChipGroup>
+        <include layout="@layout/part_chip_group" />
     </com.bosphere.fadingedgelayout.FadingEdgeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

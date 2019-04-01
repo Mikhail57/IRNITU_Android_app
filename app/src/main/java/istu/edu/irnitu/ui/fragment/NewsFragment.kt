@@ -43,7 +43,7 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
         super.onViewCreated(view, savedInstanceState)
 
         viewAdapter = NewsAdapter()
-        viewManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        viewManager = LinearLayoutManager(context)
 
         viewAdapter.setOnItemClickListener(object : OnItemClickListener<Int, News> {
             override fun onClick(view: View?, position: Int, item: News) {

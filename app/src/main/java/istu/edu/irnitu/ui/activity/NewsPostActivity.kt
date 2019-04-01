@@ -18,9 +18,11 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.daimajia.slider.library.SliderTypes.BaseSliderView
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView
+import com.google.android.material.chip.Chip
 import istu.edu.irnitu.entity.NewsPost
 import istu.edu.irnitu.utils.addSliders
 import kotlinx.android.synthetic.main.activity_news_post.*
+import kotlinx.android.synthetic.main.part_chip_group.*
 
 
 class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
@@ -68,6 +70,10 @@ class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
         newsTitle.text = post.title
         toolbar.title = post.title
         collapsingToolbar.title = post.title
+
+        post.categories.forEach {
+            chipGroup.addView(Chip(this).apply { text = it.title })
+        }
 
         val slides = post.images.map {
             DefaultSliderView(this).apply {
