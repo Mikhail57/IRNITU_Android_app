@@ -1,5 +1,7 @@
 package istu.edu.irnitu.ui.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import istu.edu.irnitu.presentation.presenter.EventsPresenter
 import com.arellomobile.mvp.presenter.InjectPresenter
 import istu.edu.irnitu.entity.Event
 import istu.edu.irnitu.ui.adapters.EventsAdapter
+import istu.edu.irnitu.utils.OnItemClickListener
 import kotlinx.android.synthetic.main.fragment_events.*
 
 class EventsFragment : MvpAppCompatFragment(), EventsView {
@@ -43,6 +46,14 @@ class EventsFragment : MvpAppCompatFragment(), EventsView {
             layoutManager = viewManager
             adapter = viewAdapter
         }
+
+        viewAdapter.setOnItemClickListener(object : OnItemClickListener<Int, Event> {
+            override fun onClick(view: View?, position: Int, item: Event) {
+                val browserIntent = Intent(Intent.ACTION_VIEW)
+                browserIntent.data = Uri.parse(item.url)
+                startActivity(browserIntent)
+            }
+        })
     }
 
 
