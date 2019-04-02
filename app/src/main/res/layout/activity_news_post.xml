@@ -81,9 +81,28 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <include layout="@layout/part_chip_group" />
+                <com.bosphere.fadingedgelayout.FadingEdgeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:fel_edge="right"
+                    app:fel_size_right="16dp"
+                    android:layout_weight="3">
+
+                    <include layout="@layout/part_scrollable_chip_group" />
+                </com.bosphere.fadingedgelayout.FadingEdgeLayout>
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:layout_marginTop="4dp"
+                    android:minWidth="5dp"
+                    android:singleLine="true"
+                    tools:text="25 декабря" />
             </LinearLayout>
 
             <TextView

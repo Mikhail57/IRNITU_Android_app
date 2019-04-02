@@ -75,6 +75,8 @@ class NewsPostActivity : MvpAppCompatActivity(), NewsPostView {
             chipGroup.addView(Chip(this).apply { text = it.title })
         }
 
+        date.text = post.date
+
         val slides = post.images.map {
             DefaultSliderView(this).apply {
                 image(it.full)
